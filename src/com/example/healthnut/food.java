@@ -1,10 +1,16 @@
 package com.example.healthnut;
 
-public class food {
+public class Food {
 
 	 int food_id;
 	 String food_name;
 	 int food_calories;
+	 
+	public Food(int id, String name, int calories){
+		this.food_id = id;
+		this.food_name = name;
+		this.food_calories = calories;
+	}
 	 
 	public int getFood_id() {
 		return food_id;
