@@ -3,12 +3,14 @@ package com.example.healthnut;
 import android.support.v7.app.ActionBarActivity;
 import android.support.v7.app.ActionBar;
 import android.support.v4.app.Fragment;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.os.Build;
 
 public class AddExercise extends ActionBarActivity {
@@ -22,6 +24,16 @@ public class AddExercise extends ActionBarActivity {
 			getSupportFragmentManager().beginTransaction()
 					.add(R.id.container, new PlaceholderFragment()).commit();
 		}
+		final Button main_menu = (Button) findViewById(R.id.main_menu);
+        main_menu.setOnClickListener(new View.OnClickListener() {
+
+            public void onClick(View arg0) {
+                //Starting a new Intent
+                Intent nextScreen = new Intent(getApplicationContext(),  MainActivity.class);
+                startActivity(nextScreen);
+
+            }
+        });
 	}
 
 	@Override

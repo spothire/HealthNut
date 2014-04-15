@@ -3,12 +3,14 @@ package com.example.healthnut;
 import android.support.v7.app.ActionBarActivity;
 import android.support.v7.app.ActionBar;
 import android.support.v4.app.Fragment;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.os.Build;
 
 public class MainActivity extends ActionBarActivity {
@@ -22,6 +24,50 @@ public class MainActivity extends ActionBarActivity {
 			getSupportFragmentManager().beginTransaction()
 					.add(R.id.container, new PlaceholderFragment()).commit();
 		}
+		final Button view_today = (Button) findViewById(R.id.viewtoday);
+		final Button calendar = (Button) findViewById(R.id.calendar);
+		final Button analyze = (Button) findViewById(R.id.analyze);
+		final Button social = (Button) findViewById(R.id.social_network);
+		
+
+        //Listening to button event
+         view_today.setOnClickListener(new View.OnClickListener() {
+
+              public void onClick(View arg0) {
+                  //Starting a new Intent
+                  Intent nextScreen = new Intent(getApplicationContext(),  Today.class);
+                  startActivity(nextScreen);
+
+              }
+          }); 
+         
+         calendar.setOnClickListener(new View.OnClickListener() {
+
+             public void onClick(View arg0) {
+                 //Starting a new Intent
+                 Intent nextScreen = new Intent(getApplicationContext(),  Calendar.class);
+                 startActivity(nextScreen);
+
+             }
+         }); 
+         analyze.setOnClickListener(new View.OnClickListener() {
+
+             public void onClick(View arg0) {
+                 //Starting a new Intent
+                 Intent nextScreen = new Intent(getApplicationContext(),  Analyze.class);
+                 startActivity(nextScreen);
+
+             }
+         }); 
+         social.setOnClickListener(new View.OnClickListener() {
+
+             public void onClick(View arg0) {
+                 //Starting a new Intent
+                 Intent nextScreen = new Intent(getApplicationContext(),  SocialNetwork.class);
+                 startActivity(nextScreen);
+
+             }
+         }); 
 	}
 
 	@Override

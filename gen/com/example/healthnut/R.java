@@ -995,18 +995,17 @@ containing a value of this type.
         public static final int action_menu_divider=0x7f050016;
         public static final int action_menu_presenter=0x7f050017;
         public static final int action_mode_close_button=0x7f050024;
-        public static final int action_settings=0x7f050059;
+        public static final int action_settings=0x7f050058;
         public static final int activity_chooser_view_content=0x7f050025;
-        public static final int add_breakfast=0x7f050055;
-        public static final int add_dinner=0x7f050057;
-        public static final int add_exercise=0x7f050054;
-        public static final int add_lunch=0x7f050056;
-        public static final int add_other=0x7f050058;
+        public static final int add_breakfast=0x7f050054;
+        public static final int add_dinner=0x7f050056;
+        public static final int add_exercise=0x7f050053;
+        public static final int add_lunch=0x7f050055;
+        public static final int add_other=0x7f050057;
         public static final int always=0x7f05000b;
-        public static final int analyze=0x7f05004e;
+        public static final int analyze=0x7f05004c;
         public static final int beginning=0x7f050011;
-        public static final int button3=0x7f05004b;
-        public static final int calendar=0x7f05004d;
+        public static final int calendar=0x7f05004b;
         public static final int camera=0x7f050042;
         public static final int carb_chart=0x7f050044;
         public static final int checkbox=0x7f05002d;
@@ -1037,8 +1036,8 @@ containing a value of this type.
         public static final int never=0x7f050009;
         public static final int none=0x7f050010;
         public static final int normal=0x7f050000;
-        public static final int notes=0x7f05004f;
-        public static final int post=0x7f050050;
+        public static final int notes=0x7f05004e;
+        public static final int post=0x7f05004f;
         public static final int progress_circular=0x7f050018;
         public static final int progress_horizontal=0x7f050019;
         public static final int protein_chart=0x7f050046;
@@ -1057,7 +1056,7 @@ containing a value of this type.
         public static final int showCustom=0x7f050007;
         public static final int showHome=0x7f050004;
         public static final int showTitle=0x7f050006;
-        public static final int social_network=0x7f05004a;
+        public static final int social_network=0x7f05004d;
         public static final int split_action_bar=0x7f05001e;
         public static final int submit_area=0x7f050039;
         public static final int summary=0x7f050048;
@@ -1065,14 +1064,14 @@ containing a value of this type.
         public static final int textView1=0x7f05003d;
         public static final int textView2=0x7f050043;
         public static final int textView3=0x7f050045;
-        public static final int textView4=0x7f050051;
-        public static final int textView5=0x7f050052;
-        public static final int textView6=0x7f050053;
+        public static final int textView4=0x7f050050;
+        public static final int textView5=0x7f050051;
+        public static final int textView6=0x7f050052;
         public static final int title=0x7f05002b;
         public static final int top_action_bar=0x7f050020;
         public static final int up=0x7f050021;
         public static final int useLogo=0x7f050003;
-        public static final int viewtoday=0x7f05004c;
+        public static final int viewtoday=0x7f05004a;
         public static final int withText=0x7f05000c;
     }
     public static final class integer {

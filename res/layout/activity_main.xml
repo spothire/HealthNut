@@ -6,15 +6,6 @@
     tools:context="com.example.healthnut.MainActivity"
     tools:ignore="MergeRootFrame" >
 
-    <Button
-        android:id="@+id/social_network"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/button3"
-        android:layout_below="@+id/button3"
-        android:layout_marginTop="41dp"
-        android:text="@string/social_network" />
-
     <TextView
         android:id="@+id/textView1"
         android:layout_width="wrap_content"
@@ -34,21 +25,30 @@
         android:text="@string/view_today" />
 
     <Button
+        android:id="@+id/social_network"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/analyze"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="25dp"
+        android:text="@string/social_network" />
+
+    <Button
         android:id="@+id/calendar"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/viewtoday"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="37dp"
+        android:layout_marginTop="20dp"
         android:text="@string/calendar" />
 
     <Button
         android:id="@+id/analyze"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignRight="@+id/calendar"
         android:layout_below="@+id/calendar"
-        android:layout_marginTop="44dp"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="30dp"
         android:text="@string/analyze" />
     
  </RelativeLayout>
