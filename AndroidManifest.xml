@@ -26,6 +26,26 @@
             android:name="com.example.healthnut.Today"
             android:label="@string/title_activity_today" >
         </activity>
+        <activity
+            android:name="com.example.healthnut.AddFood"
+            android:label="@string/title_activity_add_food" >
+        </activity>
+        <activity
+            android:name="com.example.healthnut.AddExercise"
+            android:label="@string/title_activity_add_exercise" >
+        </activity>
+        <activity
+            android:name="com.example.healthnut.Calendar"
+            android:label="@string/title_activity_calendar" >
+        </activity>
+        <activity
+            android:name="com.example.healthnut.Analyze"
+            android:label="@string/title_activity_analyze" >
+        </activity>
+        <activity
+            android:name="com.example.healthnut.SocialNetwork"
+            android:label="@string/title_activity_social_network" >
+        </activity>
     </application>
 
 </manifest>
