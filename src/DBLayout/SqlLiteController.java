@@ -2,7 +2,7 @@ package DBLayout;
 
 import java.util.HashMap;
 
-import com.example.healthnut.Food;
+import com.example.support.Food;
 
 import android.content.Context;
 import android.database.Cursor;

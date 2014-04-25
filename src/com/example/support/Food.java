@@ -1,4 +1,4 @@
-package com.example.healthnut;
+package com.example.support;
 
 public class Food {
 

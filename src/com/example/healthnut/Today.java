@@ -25,6 +25,71 @@ public class Today extends ActionBarActivity {
 					.add(R.id.container, new PlaceholderFragment()).commit();
 		}
 		final Button main_menu = (Button) findViewById(R.id.main_menu);
+		final Button exer = (Button) findViewById(R.id.add_exercise);
+		final Button breakfast = (Button) findViewById(R.id.add_breakfast);
+		final Button lunch = (Button) findViewById(R.id.add_lunch);
+		final Button dinner = (Button) findViewById(R.id.add_dinner);
+		final Button snacks = (Button) findViewById(R.id.add_other);
+		
+		breakfast.setOnClickListener(new View.OnClickListener() {
+
+            public void onClick(View arg0) {
+                //Starting a new Intent
+                Intent nextScreen = new Intent(getApplicationContext(),  AddFood.class);
+                nextScreen.putExtra("type", "breakfast");
+            
+                startActivity(nextScreen);
+
+            }
+        });
+		lunch.setOnClickListener(new View.OnClickListener() {
+
+            public void onClick(View arg0) {
+                //Starting a new Intent
+            	Intent nextScreen = new Intent(getApplicationContext(),  AddFood.class);
+                nextScreen.putExtra("type", "breakfast");
+            
+                startActivity(nextScreen);
+
+            }
+        });
+		dinner.setOnClickListener(new View.OnClickListener() {
+
+            public void onClick(View arg0) {
+                //Starting a new Intent
+            	Intent nextScreen = new Intent(getApplicationContext(),  AddFood.class);
+                nextScreen.putExtra("type", "breakfast");
+            
+                startActivity(nextScreen);
+
+            }
+        });
+		snacks.setOnClickListener(new View.OnClickListener() {
+
+            public void onClick(View arg0) {
+                //Starting a new Intent
+            	Intent nextScreen = new Intent(getApplicationContext(),  AddFood.class);
+                nextScreen.putExtra("type", "breakfast");
+            
+                startActivity(nextScreen);
+
+            }
+        });
+		
+		
+		
+		
+		
+		exer.setOnClickListener(new View.OnClickListener() {
+
+            public void onClick(View arg0) {
+                //Starting a new Intent
+                Intent nextScreen = new Intent(getApplicationContext(),  AddExercise.class);
+                startActivity(nextScreen);
+
+            }
+        });
+		
         main_menu.setOnClickListener(new View.OnClickListener() {
 
             public void onClick(View arg0) {

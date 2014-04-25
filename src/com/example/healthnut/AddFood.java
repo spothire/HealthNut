@@ -1,5 +1,7 @@
 package com.example.healthnut;
 
+import java.util.Calendar;
+
 import android.support.v7.app.ActionBarActivity;
 import android.support.v7.app.ActionBar;
 import android.support.v4.app.Fragment;
@@ -11,6 +13,8 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.EditText;
+import android.widget.Toast;
 import android.os.Build;
 
 public class AddFood extends ActionBarActivity {
@@ -25,6 +29,31 @@ public class AddFood extends ActionBarActivity {
 					.add(R.id.container, new PlaceholderFragment()).commit();
 		}
 		final Button main_menu = (Button) findViewById(R.id.main_menu);
+		final Button add = (Button) findViewById(R.id.food_add);
+		final EditText food = (EditText) findViewById(R.id.food_input);
+		final EditText notes = (EditText) findViewById(R.id.food_notes);
+				
+		
+		
+        add.setOnClickListener(new View.OnClickListener() {
+
+            public void onClick(View arg0) {
+                
+            	Intent i = getIntent();
+                // Receiving the Data
+                String type = i.getStringExtra("type");
+                Calendar c = Calendar.getInstance(); 
+                String name = food.getText().toString();
+                String note = notes.getText().toString();
+                int id = c.get(Calendar.DATE) + c.get(Calendar.MONTH) + c.get(Calendar.YEAR);
+                
+                Toast.makeText(getApplicationContext(), name + " " + id + " " + note + " " + type, Toast.LENGTH_SHORT).show();
+            }
+        });
+        
+        
+        
+        
         main_menu.setOnClickListener(new View.OnClickListener() {
 
             public void onClick(View arg0) {

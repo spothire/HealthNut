@@ -25,6 +25,7 @@ public class Analyze extends ActionBarActivity {
 					.add(R.id.container, new PlaceholderFragment()).commit();
 		}
 		final Button main_menu = (Button) findViewById(R.id.main_menu);
+		
         main_menu.setOnClickListener(new View.OnClickListener() {
 
             public void onClick(View arg0) {

@@ -1,5 +1,7 @@
 package com.example.healthnut;
 
+import java.util.Calendar;
+
 import android.support.v7.app.ActionBarActivity;
 import android.support.v7.app.ActionBar;
 import android.support.v4.app.Fragment;
@@ -11,6 +13,8 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.EditText;
+import android.widget.Toast;
 import android.os.Build;
 
 public class AddExercise extends ActionBarActivity {
@@ -25,6 +29,29 @@ public class AddExercise extends ActionBarActivity {
 					.add(R.id.container, new PlaceholderFragment()).commit();
 		}
 		final Button main_menu = (Button) findViewById(R.id.main_menu);
+		final Button add_exer = (Button) findViewById(R.id.add_exercise);
+		final EditText exer = (EditText) findViewById(R.id.exercise);
+		
+		
+		
+        add_exer.setOnClickListener(new View.OnClickListener() {
+
+            public void onClick(View arg0) {
+            	
+            	
+                //Starting a new Intent
+            	Calendar c = Calendar.getInstance(); 
+            	int id = c.get(Calendar.DATE) + c.get(Calendar.MONTH) + c.get(Calendar.YEAR);
+            	String name = exer.getText().toString();
+            	
+            	Toast.makeText(getApplicationContext(), name + " " + id, Toast.LENGTH_SHORT).show();
+            	
+
+            }
+        });
+		
+		
+		
         main_menu.setOnClickListener(new View.OnClickListener() {
 
             public void onClick(View arg0) {

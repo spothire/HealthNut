@@ -45,7 +45,7 @@ public class MainActivity extends ActionBarActivity {
 
              public void onClick(View arg0) {
                  //Starting a new Intent
-                 Intent nextScreen = new Intent(getApplicationContext(),  Calendar.class);
+                 Intent nextScreen = new Intent(getApplicationContext(),  appCalendar.class);
                  startActivity(nextScreen);
 
              }

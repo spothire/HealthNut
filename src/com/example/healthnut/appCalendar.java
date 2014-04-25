@@ -13,7 +13,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.os.Build;
 
-public class Calendar extends ActionBarActivity {
+public class appCalendar extends ActionBarActivity {
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
