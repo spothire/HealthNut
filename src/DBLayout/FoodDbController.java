@@ -1,5 +1,6 @@
 package DBLayout;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 
 import com.example.support.Exercise;
@@ -28,7 +29,8 @@ public class FoodDbController extends SQLiteOpenHelper{
 	public void onCreate(SQLiteDatabase db) {
 		String query;
 		query = "CREATE TABLE Food ( FoodId INTEGER PRIMARY KEY, "
-				+ "Name STRING, Calories INTEGER)";
+				+ "Name STRING, Calories INTEGER, Type STRING, Date STRING,"
+				+ "Latitude REAL, Longitude REAL)";
 		db.execSQL(query);
 		Log.d(LOGCAT,"Food Table Created");
 	}
@@ -44,6 +46,10 @@ public class FoodDbController extends SQLiteOpenHelper{
 		values.put("FoodId", f.getFood_id());
 		values.put("Name", f.getFood_name());
 		values.put("Calories", f.getFood_calories());
+		values.put("Type", f.getType());
+		values.put("Date", f.getDate());
+		values.put("Latitude", f.getLatitude());
+		values.put("Longitude", f.getLongitude());
 		
 		db.insert("Food", null, values);
 		db.close();
@@ -62,11 +68,38 @@ public class FoodDbController extends SQLiteOpenHelper{
 		String selectQuery = "SELECT * FROM Food where FoodId='"+id+"'";
 		Cursor cursor = database.rawQuery(selectQuery, null);
 		if (cursor.moveToFirst()) { 
-			Food retFood = new Food(cursor.getInt(1), cursor.getString(2), cursor.getInt(3));
+			Food retFood = new Food(cursor.getInt(1), cursor.getString(2), 
+					cursor.getInt(3), cursor.getString(4), cursor.getString(5),
+					cursor.getDouble(6), cursor.getDouble(7));
 			return retFood;
 		}
 	
 		return null;
+	}
+	
+	/**
+	 * get all food with same date string
+	 * @param date
+	 * @return
+	 */
+	public ArrayList<Food> getFoodByDate(String date) {
+		ArrayList<Food> foodList = new ArrayList<Food>();
+		String selQuery = "SELECT * FROM Food where Date='"+date+"'";
+		
+		SQLiteDatabase db = this.getWritableDatabase();
+		Cursor cursor = db.rawQuery(selQuery, null);
+		
+		if (cursor.moveToFirst()) {
+			do {
+				Food f = new Food(cursor.getInt(1), cursor.getString(2), 
+					cursor.getInt(3), cursor.getString(4), cursor.getString(5),
+					cursor.getDouble(6), cursor.getDouble(7));
+				//add food to arraylist
+				foodList.add(f);
+			} while (cursor.moveToNext());
+		}
+		
+		return foodList;
 	}
 	
 	@Override

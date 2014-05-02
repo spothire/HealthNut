@@ -3,9 +3,20 @@ package com.example.support;
 public class Exercise {
 	int exer_id;
 	String exer_name;
+	String date;
 	double Latitude;
 	double Longitude;
 	
+	public Exercise(int exer_id, String exer_name, String date,
+			double latitude, double longitude) {
+		super();
+		this.exer_id = exer_id;
+		this.exer_name = exer_name;
+		this.date = date;
+		Latitude = latitude;
+		Longitude = longitude;
+	}
+
 	public double getLatitude() {
 		return Latitude;
 	}
@@ -21,12 +32,6 @@ public class Exercise {
 	public void setLongitude(double longitude) {
 		Longitude = longitude;
 	}
-
-	public Exercise(int exer_id, String exer_name, double d, double e) {
-		super();
-		this.exer_id = exer_id;
-		this.exer_name = exer_name;
-	}
 	
 	public int getExer_id() {
 		return exer_id;
@@ -40,6 +45,13 @@ public class Exercise {
 	public void setExer_name(String exer_name) {
 		this.exer_name = exer_name;
 	}
-	
-	
+
+	public String getDate() {
+		return date;
+	}
+
+	public void setDate(String date) {
+		this.date = date;
+	}
+		
 }

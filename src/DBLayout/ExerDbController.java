@@ -1,8 +1,10 @@
 package DBLayout;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 
 import com.example.support.Exercise;
+import com.example.support.Food;
 
 import android.content.ContentValues;
 import android.content.Context;
@@ -27,7 +29,7 @@ public class ExerDbController extends SQLiteOpenHelper {
 	public void onCreate(SQLiteDatabase db) {
 		String query;		
 		query = "CREATE TABLE Exercise ( ExerId INTEGER PRIMARY KEY, "
-				+ "Name STRING, Latitude REAL, Longitude REAL)";
+				+ "Name STRING, Date STRING, Latitude REAL, Longitude REAL)";
 		db.execSQL(query);
 		Log.d(LOGCAT,"Exercise Table Created");
 	}
@@ -38,6 +40,7 @@ public class ExerDbController extends SQLiteOpenHelper {
 		ContentValues values = new ContentValues();
 		values.put("ExerId", e.getExer_id());
 		values.put("Name", e.getExer_name());
+		values.put("Date", e.getDate());
 		values.put("Latitude", e.getLatitude());
 		values.put("Longitude", e.getLongitude());
 		
@@ -56,11 +59,35 @@ public class ExerDbController extends SQLiteOpenHelper {
 		String selectQuery = "SELECT * FROM Exercise where ExerId='"+id+"'";
 		Cursor cursor = database.rawQuery(selectQuery, null);
 		if (cursor.moveToFirst()) { 
-			Exercise ret = new Exercise(cursor.getInt(1), cursor.getString(2), cursor.getDouble(3), cursor.getDouble(4));
+			Exercise ret = new Exercise(cursor.getInt(1), cursor.getString(2), 
+					cursor.getString(3), cursor.getDouble(4), cursor.getDouble(5));
 			return ret;
 		}
 	
 		return null;
+	}
+	
+	/**
+	 * get all food with same date string
+	 * @param date
+	 * @return
+	 */
+	public ArrayList<Exercise> getExerByDate(String date) {
+		ArrayList<Exercise> exerList = new ArrayList<Exercise>();
+		String selQuery = "SELECT * FROM Exercise where Date='"+date+"'";
+		
+		SQLiteDatabase db = this.getWritableDatabase();
+		Cursor cursor = db.rawQuery(selQuery, null);
+		
+		if (cursor.moveToFirst()) {
+			do {
+				Exercise e = new Exercise(cursor.getInt(1), cursor.getString(2), 
+					cursor.getString(3), cursor.getDouble(4), cursor.getDouble(5));
+				exerList.add(e);
+			} while (cursor.moveToNext());
+		}
+		
+		return exerList;
 	}
 	
 	@Override
