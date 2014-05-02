@@ -1,5 +1,6 @@
 package DBLayout;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.HashMap;
 
@@ -13,12 +14,12 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.util.Log;
 
-public class ExerDbController extends SQLiteOpenHelper {
+public class ExerDbController extends SQLiteOpenHelper implements Serializable {
 	private static final String LOGCAT = null;
 	
 	//create and print to log
-	public ExerDbController(Context context) {
-		super(context, "androidsqlite.db", null,1);
+	public ExerDbController(Context in) {
+		super(in, "androidsqlite.db", null,1);
 		Log.d(LOGCAT,"Created");
 	}
 	

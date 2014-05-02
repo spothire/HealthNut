@@ -19,7 +19,7 @@
     <string name="add_food">+Food</string>
     <string name="add_exercise">+Exercise</string>
     <string name="title_activity_add_food">AddFood</string>
-    <string name="add_notes">Notes</string>
+    <string name="add_notes">Calories</string>
     <string name="camera">Camera</string>
     <string name="title_activity_add_exercise">AddExercise</string>
     <string name="title_activity_calendar">Calendar</string>
@@ -29,5 +29,6 @@
     <string name="protein">Exercise Details for today:</string>
     <string name="title_activity_social_network">SocialNetwork</string>
     <string name="post">Post</string>
+    <string name="title_activity_nfc">NFC</string>
 
 </resources>

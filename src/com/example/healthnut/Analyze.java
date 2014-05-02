@@ -61,10 +61,13 @@ public class Analyze extends ActionBarActivity {
 		int day = c.get(Calendar.DAY_OF_MONTH);
 		int month = c.get(Calendar.MONTH);
 		int year = c.get(Calendar.YEAR);
+		
+		String dateId = Integer.toString(day)+Integer.toString(month)+Integer.toString(year);
+		
 		Log.i("A", Integer.toString(day));
 		Log.i("A", Integer.toString(month));
 		Log.i("A", Integer.toString(year));
-		Toast.makeText(getApplicationContext(), longitude + " " + latitude, Toast.LENGTH_SHORT).show();
+		Toast.makeText(getApplicationContext(), dateId, Toast.LENGTH_SHORT).show();
         
 		//TODO Get database with day month year here
 		main_menu.setOnClickListener(new View.OnClickListener() {

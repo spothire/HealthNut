@@ -1,5 +1,6 @@
 package DBLayout;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.HashMap;
 
@@ -13,7 +14,7 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.util.Log;
 
-public class FoodDbController extends SQLiteOpenHelper{
+public class FoodDbController extends SQLiteOpenHelper implements Serializable{
 	private static final String LOGCAT = null;
 	
 	//create and print to log
@@ -120,6 +121,6 @@ public class FoodDbController extends SQLiteOpenHelper{
 		String deleteQuery = "DELETE FROM Food where FoodId='"+ id +"'";
 		Log.d("query",deleteQuery);
 		database.execSQL(deleteQuery);
-	}	
+	}
 
 }

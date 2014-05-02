@@ -38,6 +38,7 @@
         android:layout_below="@+id/food_input"
         android:layout_marginTop="52dp"
         android:hint="@string/add_notes"
+        android:inputType="number"
         android:ems="10" />
 
     <Button
@@ -65,7 +66,5 @@
         android:layout_alignLeft="@+id/main_menu"
         android:layout_below="@+id/main_menu"
         android:src="@drawable/abc_ab_bottom_solid_dark_holo" />
-
-
 
 </RelativeLayout>

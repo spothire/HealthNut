@@ -2,6 +2,9 @@ package com.example.healthnut;
 
 import java.util.Calendar;
 
+import com.example.support.Exercise;
+
+import DBLayout.ExerDbController;
 import android.support.v7.app.ActionBarActivity;
 import android.support.v7.app.ActionBar;
 import android.support.v4.app.Fragment;
@@ -17,13 +20,14 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.Toast;
 import android.os.Build;
 import android.provider.MediaStore;
 
 public class AddExercise extends ActionBarActivity {
-
+	ExerDbController exerDb = new ExerDbController(this);
 	@Override
 	
 	protected void onCreate(Bundle savedInstanceState) {
@@ -37,21 +41,27 @@ public class AddExercise extends ActionBarActivity {
 		final Button main_menu = (Button) findViewById(R.id.main_menu);
 		final Button add_exer = (Button) findViewById(R.id.add_exercise);
 		final EditText exer = (EditText) findViewById(R.id.exercise);
-
-		
-		
 		
         add_exer.setOnClickListener(new View.OnClickListener() {
 
             public void onClick(View arg0) {
+            	//unix timestamp
+            	int id = (int) (System.currentTimeMillis() / 1000L);
             	
-            	
-                //Starting a new Intent
-            	Calendar c = Calendar.getInstance(); 
-            	int id = c.get(Calendar.DATE) + c.get(Calendar.MONTH) + c.get(Calendar.YEAR);
             	String name = exer.getText().toString();
             	
-            	Toast.makeText(getApplicationContext(), name + " " + id, Toast.LENGTH_SHORT).show();
+            	//create date
+            	Calendar c = Calendar.getInstance(); 
+            	int day = c.get(Calendar.DAY_OF_MONTH);
+            	int month = c.get(Calendar.MONTH);
+            	int year = c.get(Calendar.YEAR);
+
+            	String dateStr = Integer.toString(day)+Integer.toString(month)+Integer.toString(year);
+
+            	Exercise eObj = new Exercise(id, name, dateStr, 0.0, 0.0);
+            	exerDb.insertExercise(eObj);
+            	
+            	Toast.makeText(getApplicationContext(), name + " " + id + " " + dateStr, Toast.LENGTH_SHORT).show();
             	
             	try {
             	    Uri notification = RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION);
@@ -62,9 +72,7 @@ public class AddExercise extends ActionBarActivity {
             	}
             }
         });
-		
-		
-		
+
         main_menu.setOnClickListener(new View.OnClickListener() {
 
             public void onClick(View arg0) {

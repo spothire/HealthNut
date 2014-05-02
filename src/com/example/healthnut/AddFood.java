@@ -3,6 +3,9 @@ package com.example.healthnut;
 import java.io.File;
 import java.util.Calendar;
 
+import com.example.support.Food;
+
+import DBLayout.FoodDbController;
 import android.support.v7.app.ActionBarActivity;
 import android.support.v7.app.ActionBar;
 import android.support.v4.app.Fragment;
@@ -27,6 +30,7 @@ import android.provider.MediaStore;
 
 public class AddFood extends ActionBarActivity {
 	//public static final int MEDIA_TYPE_IMAGE = 1;
+	FoodDbController foodDb = new FoodDbController(this);
 	
 	private static final int CAPTURE_IMAGE_ACTIVITY_REQUEST_CODE = 100;
 	ImageView mImage;
@@ -75,18 +79,40 @@ public class AddFood extends ActionBarActivity {
         add.setOnClickListener(new View.OnClickListener() {
 
             public void onClick(View arg0) {
-            	id = (int) (System.currentTimeMillis() / 1000L);
             	Intent i = getIntent();
+
+            	//unix timestamp
+            	id = (int) (System.currentTimeMillis() / 1000L);
+            	
+            	//create date
+            	Calendar c = Calendar.getInstance(); 
+            	int day = c.get(Calendar.DAY_OF_MONTH);
+            	int month = c.get(Calendar.MONTH);
+            	int year = c.get(Calendar.YEAR);
+
+            	String dateStr = Integer.toString(day)+Integer.toString(month)+Integer.toString(year);
+            	
                 // Receiving the Data
                 String type = i.getStringExtra("type");
                 String name = food.getText().toString();
-                String note = notes.getText().toString();
-                //will be unix timestamp
+                String cals_str = (notes.getText()).toString();
+                int cals;
                 
-                Toast.makeText(getApplicationContext(), name + " " + id + " " + note + " " + type, Toast.LENGTH_SHORT).show();
+                //insert into db
+                try {
+                	cals = Integer.parseInt(cals_str);
+                	Food f = new Food(id, name, cals, type, dateStr, 0.0, 0.0);
+                	//((FoodDbController) getIntent().getSerializableExtra("Food Db")).insertFood(f);
+                	foodDb.insertFood(f);
+                	Toast.makeText(getApplicationContext(), name + " " + id + 
+                			" " + cals_str + " " + type + " "+ dateStr, Toast.LENGTH_SHORT).show();
+                } catch (NumberFormatException nfe) {
+                	Toast.makeText(getApplicationContext(), "Please input integer in calories field.", Toast.LENGTH_SHORT).show();
+                }
+                
+                
                 Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
-
-                
+       
                 File imagesFolder = new File(Environment.getExternalStorageDirectory(), "MyImages"); 
                 String filename = "image_"+ id + ".jpg";
                 File image = new File(imagesFolder, filename);
