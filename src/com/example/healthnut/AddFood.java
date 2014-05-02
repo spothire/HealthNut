@@ -33,8 +33,6 @@ public class AddFood extends ActionBarActivity {
 		final EditText food = (EditText) findViewById(R.id.food_input);
 		final EditText notes = (EditText) findViewById(R.id.food_notes);
 				
-		
-		
         add.setOnClickListener(new View.OnClickListener() {
 
             public void onClick(View arg0) {
@@ -42,17 +40,14 @@ public class AddFood extends ActionBarActivity {
             	Intent i = getIntent();
                 // Receiving the Data
                 String type = i.getStringExtra("type");
-                Calendar c = Calendar.getInstance(); 
                 String name = food.getText().toString();
                 String note = notes.getText().toString();
-                int id = c.get(Calendar.DATE) + c.get(Calendar.MONTH) + c.get(Calendar.YEAR);
+                //will be unix timestamp
+                int id = (int) (System.currentTimeMillis() / 1000L);
                 
                 Toast.makeText(getApplicationContext(), name + " " + id + " " + note + " " + type, Toast.LENGTH_SHORT).show();
             }
         });
-        
-        
-        
         
         main_menu.setOnClickListener(new View.OnClickListener() {
 
