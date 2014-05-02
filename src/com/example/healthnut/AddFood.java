@@ -1,12 +1,16 @@
 package com.example.healthnut;
 
+import java.io.File;
 import java.util.Calendar;
 
 import android.support.v7.app.ActionBarActivity;
 import android.support.v7.app.ActionBar;
 import android.support.v4.app.Fragment;
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.net.Uri;
 import android.os.Bundle;
+import android.os.Environment;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -14,12 +18,33 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.Toast;
 import android.os.Build;
+import android.provider.MediaStore;
 
 public class AddFood extends ActionBarActivity {
+	//public static final int MEDIA_TYPE_IMAGE = 1;
+	
+	private static final int CAPTURE_IMAGE_ACTIVITY_REQUEST_CODE = 100;
 
 	@Override
+	
+	
+	protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+	    if (requestCode == CAPTURE_IMAGE_ACTIVITY_REQUEST_CODE) {
+	        if (resultCode == RESULT_OK) {
+	            // Image captured and saved to fileUri specified in the Intent
+	            Toast.makeText(this, "Image saved to:\n" +
+	                     data.getData(), Toast.LENGTH_LONG).show();
+	        } else if (resultCode == RESULT_CANCELED) {
+	            // User cancelled the image capture
+	        } else {
+	        	Toast.makeText(this, "Problem", Toast.LENGTH_LONG).show();
+	            // Image capture failed, advise user
+	        }
+	    }
+	}
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_add_food);
@@ -32,6 +57,29 @@ public class AddFood extends ActionBarActivity {
 		final Button add = (Button) findViewById(R.id.food_add);
 		final EditText food = (EditText) findViewById(R.id.food_input);
 		final EditText notes = (EditText) findViewById(R.id.food_notes);
+		
+		
+		final Button camera = (Button) findViewById(R.id.camera);
+
+		
+		
+        camera.setOnClickListener(new View.OnClickListener() {
+
+            public void onClick(View arg0) {
+            	
+                Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+
+                
+                File imagesFolder = new File(Environment.getExternalStorageDirectory(), "MyImages"); 
+                File image = new File(imagesFolder, "image_002.jpg");
+                Uri fileUri = Uri.fromFile(image); // create a file to save the image
+                intent.putExtra(MediaStore.EXTRA_OUTPUT, fileUri); // set the image file name
+
+                // start the image capture Intent
+                startActivityForResult(intent, CAPTURE_IMAGE_ACTIVITY_REQUEST_CODE);
+            }
+        });
+		
 				
         add.setOnClickListener(new View.OnClickListener() {
 

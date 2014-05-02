@@ -6,6 +6,7 @@
     tools:context="com.example.healthnut.AddFood"
     tools:ignore="MergeRootFrame" >
 
+
     <TextView
         android:id="@+id/textView1"
         android:layout_width="wrap_content"
@@ -73,5 +74,7 @@
         android:layout_alignLeft="@+id/main_menu"
         android:layout_below="@+id/main_menu"
         android:src="@drawable/abc_ab_bottom_solid_dark_holo" />
+
+
 
 </RelativeLayout>
