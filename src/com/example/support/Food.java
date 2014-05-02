@@ -1,5 +1,14 @@
 package com.example.support;
 
+import java.io.IOException;
+import java.util.List;
+import java.util.Locale;
+
+import android.content.Context;
+import android.location.Address;
+import android.location.Geocoder;
+import android.widget.TextView;
+
 public class Food implements java.io.Serializable {
 
 	 int food_id;
@@ -71,6 +80,29 @@ public class Food implements java.io.Serializable {
 
 	public void setLongitude(double longitude) {
 		this.longitude = longitude;
+	}
+	
+	
+	public void printtoView(TextView text, Context con){
+		text.append("Food Name: " + this.food_name + "\n");
+		text.append("Calories: " + this.food_calories + "\n");
+		text.append("Type: " + this.type + "\n");
+		Geocoder geocoder;
+		List<Address> addresses = null;
+		geocoder = new Geocoder(con, Locale.getDefault());
+		try {
+			addresses = geocoder.getFromLocation(latitude, longitude, 1);
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
+		String address = addresses.get(0).getAddressLine(0);
+		String city = addresses.get(0).getAddressLine(1);
+		String country = addresses.get(0).getAddressLine(2);
+		text.append("Address: " + address + "\n");
+		text.append("City: " + city + "\n");
+		text.append("Country: " + country + "\n\n");
 	}
 	
 }

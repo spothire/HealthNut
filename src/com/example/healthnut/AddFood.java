@@ -8,6 +8,8 @@ import android.support.v7.app.ActionBar;
 import android.support.v4.app.Fragment;
 import android.content.Intent;
 import android.graphics.Bitmap;
+import android.media.Ringtone;
+import android.media.RingtoneManager;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Environment;
@@ -92,6 +94,15 @@ public class AddFood extends ActionBarActivity {
                 intent.putExtra(MediaStore.EXTRA_OUTPUT, fileUri); // set the image file name
                 intent.putExtra("location", fileUri.toString());
                 // start the image capture Intent
+                
+            	try {
+            	    Uri notification = RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION);
+            	    Ringtone r = RingtoneManager.getRingtone(getApplicationContext(), notification);
+            	    r.play();
+            	} catch (Exception e) {
+            	    e.printStackTrace();
+            	}
+                
                 startActivityForResult(intent, CAPTURE_IMAGE_ACTIVITY_REQUEST_CODE);
             }
         });
