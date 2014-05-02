@@ -62,21 +62,26 @@ public class AddFood extends ActionBarActivity {
 					.add(R.id.container, new PlaceholderFragment()).commit();
 		}
 		
-		id = (int) (System.currentTimeMillis() / 1000L);
+		
 		final Button main_menu = (Button) findViewById(R.id.main_menu);
 		final Button add = (Button) findViewById(R.id.food_add);
 		final EditText food = (EditText) findViewById(R.id.food_input);
 		final EditText notes = (EditText) findViewById(R.id.food_notes);
 		
 		
-		final Button camera = (Button) findViewById(R.id.camera);
-
-		
-		
-        camera.setOnClickListener(new View.OnClickListener() {
+				
+        add.setOnClickListener(new View.OnClickListener() {
 
             public void onClick(View arg0) {
-            	
+            	id = (int) (System.currentTimeMillis() / 1000L);
+            	Intent i = getIntent();
+                // Receiving the Data
+                String type = i.getStringExtra("type");
+                String name = food.getText().toString();
+                String note = notes.getText().toString();
+                //will be unix timestamp
+                
+                Toast.makeText(getApplicationContext(), name + " " + id + " " + note + " " + type, Toast.LENGTH_SHORT).show();
                 Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
 
                 
@@ -88,23 +93,6 @@ public class AddFood extends ActionBarActivity {
                 intent.putExtra("location", fileUri.toString());
                 // start the image capture Intent
                 startActivityForResult(intent, CAPTURE_IMAGE_ACTIVITY_REQUEST_CODE);
-            }
-        });
-		
-				
-        add.setOnClickListener(new View.OnClickListener() {
-
-            public void onClick(View arg0) {
-                
-            	Intent i = getIntent();
-                // Receiving the Data
-                String type = i.getStringExtra("type");
-                String name = food.getText().toString();
-                String note = notes.getText().toString();
-                //will be unix timestamp
-                
-                Toast.makeText(getApplicationContext(), name + " " + id + " " + note + " " + type, Toast.LENGTH_SHORT).show();
-                id = (int) (System.currentTimeMillis() / 1000L);
             }
         });
         

@@ -1,6 +1,6 @@
 package com.example.support;
 
-public class Exercise {
+public class Exercise implements java.io.Serializable{
 	int exer_id;
 	String exer_name;
 	String date;

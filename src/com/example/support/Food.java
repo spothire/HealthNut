@@ -1,6 +1,6 @@
 package com.example.support;
 
-public class Food {
+public class Food implements java.io.Serializable {
 
 	 int food_id;
 	 String food_name;
