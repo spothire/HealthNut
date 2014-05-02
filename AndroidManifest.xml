@@ -42,7 +42,7 @@
             android:label="@string/title_activity_add_exercise" >
         </activity>
         <activity
-            android:name="com.example.healthnut.Calendar"
+            android:name="com.example.healthnut.appCalendar"
             android:label="@string/title_activity_calendar" >
         </activity>
         <activity

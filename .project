@@ -30,11 +30,4 @@
 		<nature>com.android.ide.eclipse.adt.AndroidNature</nature>
 		<nature>org.eclipse.jdt.core.javanature</nature>
 	</natures>
-	<linkedResources>
-		<link>
-			<name>src/DBLayout/SqlLiteController.java</name>
-			<type>1</type>
-			<location>/Users/Saketh/Documents/workspace/HealthNut/src/DBLayout/SqlLiteController.java</location>
-		</link>
-	</linkedResources>
 </projectDescription>

@@ -27,17 +27,25 @@ public class AddFood extends ActionBarActivity {
 	//public static final int MEDIA_TYPE_IMAGE = 1;
 	
 	private static final int CAPTURE_IMAGE_ACTIVITY_REQUEST_CODE = 100;
+	ImageView mImage;
+	Uri fileUri;
+	int id;
 
 	@Override
 	
 	
 	protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-	    if (requestCode == CAPTURE_IMAGE_ACTIVITY_REQUEST_CODE) {
+	  
+
+		if (requestCode == CAPTURE_IMAGE_ACTIVITY_REQUEST_CODE) {
 	        if (resultCode == RESULT_OK) {
+	        	mImage = (ImageView) findViewById(R.id.mImageView);
+                mImage.setImageURI(fileUri);
 	            // Image captured and saved to fileUri specified in the Intent
-	            Toast.makeText(this, "Image saved to:\n" +
-	                     data.getData(), Toast.LENGTH_LONG).show();
+	            //Toast.makeText(this, "Image saved to:\n" +
+	              //       data.getData(), Toast.LENGTH_LONG).show();
 	        } else if (resultCode == RESULT_CANCELED) {
+	        	Toast.makeText(this, "Cancelled", Toast.LENGTH_LONG).show();
 	            // User cancelled the image capture
 	        } else {
 	        	Toast.makeText(this, "Problem", Toast.LENGTH_LONG).show();
@@ -53,6 +61,8 @@ public class AddFood extends ActionBarActivity {
 			getSupportFragmentManager().beginTransaction()
 					.add(R.id.container, new PlaceholderFragment()).commit();
 		}
+		
+		id = (int) (System.currentTimeMillis() / 1000L);
 		final Button main_menu = (Button) findViewById(R.id.main_menu);
 		final Button add = (Button) findViewById(R.id.food_add);
 		final EditText food = (EditText) findViewById(R.id.food_input);
@@ -71,10 +81,11 @@ public class AddFood extends ActionBarActivity {
 
                 
                 File imagesFolder = new File(Environment.getExternalStorageDirectory(), "MyImages"); 
-                File image = new File(imagesFolder, "image_002.jpg");
-                Uri fileUri = Uri.fromFile(image); // create a file to save the image
+                String filename = "image_"+ id + ".jpg";
+                File image = new File(imagesFolder, filename);
+                fileUri = Uri.fromFile(image); // create a file to save the image
                 intent.putExtra(MediaStore.EXTRA_OUTPUT, fileUri); // set the image file name
-
+                intent.putExtra("location", fileUri.toString());
                 // start the image capture Intent
                 startActivityForResult(intent, CAPTURE_IMAGE_ACTIVITY_REQUEST_CODE);
             }
@@ -91,9 +102,9 @@ public class AddFood extends ActionBarActivity {
                 String name = food.getText().toString();
                 String note = notes.getText().toString();
                 //will be unix timestamp
-                int id = (int) (System.currentTimeMillis() / 1000L);
                 
                 Toast.makeText(getApplicationContext(), name + " " + id + " " + note + " " + type, Toast.LENGTH_SHORT).show();
+                id = (int) (System.currentTimeMillis() / 1000L);
             }
         });
         
