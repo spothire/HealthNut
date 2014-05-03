@@ -7,12 +7,13 @@ import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.nio.charset.Charset;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
 
-
 import com.example.support.Food;
 
+import DBLayout.FoodDbController;
 import android.support.v7.app.ActionBarActivity;
 import android.support.v7.app.ActionBar;
 import android.support.v4.app.Fragment;
@@ -45,9 +46,11 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 import android.os.Build;
@@ -57,7 +60,10 @@ import android.os.Build;
 public class NFC extends Activity implements CreateNdefMessageCallback,
         OnNdefPushCompleteCallback {
     NfcAdapter mNfcAdapter;
+    ArrayList<Food> foodList;
     TextView mInfoText;
+    Spinner spin;
+    FoodDbController foodDb = new FoodDbController(this);
     private static final int MESSAGE_SENT = 1;
 
     @Override
@@ -81,8 +87,28 @@ public class NFC extends Activity implements CreateNdefMessageCallback,
         Intent i = getIntent();
         
         String dateID = i.getStringExtra("date");
+        foodList = foodDb.getFoodByDate(dateID);
+        
+        spin = (Spinner) findViewById(R.id.spinner1);
+       
+        
+    	List<String> list = new ArrayList<String>();
+
+
         
         
+        for(int j =0; j< foodList.size(); j++){
+        	list.add(foodList.get(j).getFood_name());
+        }
+        
+        if(foodList.size()>0){
+    	ArrayAdapter<String> dataAdapter = new ArrayAdapter<String>(this,
+        		android.R.layout.simple_spinner_item, list);
+        	dataAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        spin.setAdapter(dataAdapter);
+        Toast.makeText(getApplicationContext(), spin.getSelectedItem().toString(), Toast.LENGTH_SHORT).show();
+        
+        }
         
         main_menu.setOnClickListener(new View.OnClickListener() {
         	
@@ -141,19 +167,21 @@ public class NFC extends Activity implements CreateNdefMessageCallback,
     @Override
     public NdefMessage createNdefMessage(NfcEvent event) {
     	
-    	LocationManager locationManager = (LocationManager)
-				getSystemService(Context.LOCATION_SERVICE);
-		Criteria criteria = new Criteria();
-	    String provider = locationManager.getBestProvider(criteria, false);
-	    Location location = locationManager.getLastKnownLocation(provider);
-	    double longitude = location.getLongitude();
-		double latitude = location.getLatitude();
+    	
 		
 		
-		Food testfood = new Food(100,  "Burger", 1000, "Lunch", "242014", latitude, longitude );
-		
-
-        String text = serialize(testfood);
+		Food sendFood = null;
+    	String name = spin.getSelectedItem().toString();
+    	Toast.makeText(getApplicationContext(), name, Toast.LENGTH_SHORT).show();
+    	
+    	for(int i = 0; i< foodList.size();i++){
+    		if(name.equals(foodList.get(i).getFood_name())){
+    			sendFood = foodList.get(i);
+    		}
+    	}
+    	
+    	
+        String text = serialize(sendFood);
         NdefMessage msg = new NdefMessage(
                 new NdefRecord[] { createMimeRecord(
                         "application/com.example.healthnut", text.getBytes())

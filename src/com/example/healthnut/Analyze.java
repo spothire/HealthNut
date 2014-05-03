@@ -59,8 +59,8 @@ public class Analyze extends ActionBarActivity {
 		food_view.setText("Today's Food: \n" + foodList.toString());
 		 
 		
-		ArrayList<Exercise> exerciseList = exerDb.getExerByDate(dateId);
-		exercise_view.setText("Today's Exercise: \n" + exerciseList.toString());
+		//ArrayList<Exercise> exerciseList = exerDb.getExerByDate(dateId);
+		//exercise_view.setText("Today's Exercise: \n" + exerciseList.toString());
 		
 		Log.i("A", Integer.toString(day));
 		Log.i("A", Integer.toString(month));

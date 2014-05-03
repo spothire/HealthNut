@@ -5,7 +5,8 @@ import java.util.ArrayList;
 import java.util.HashMap;
 
 import com.example.support.Exercise;
-import com.example.support.Food;
+
+
 
 import android.content.ContentValues;
 import android.content.Context;
@@ -15,7 +16,7 @@ import android.database.sqlite.SQLiteOpenHelper;
 import android.util.Log;
 
 public class ExerDbController extends SQLiteOpenHelper implements Serializable {
-	private static final String LOGCAT = null;
+	private static final String LOGCAT = "exercise";
 	
 	//create and print to log
 	public ExerDbController(Context in) {
@@ -28,6 +29,7 @@ public class ExerDbController extends SQLiteOpenHelper implements Serializable {
 	 * create exercise db
 	 */
 	public void onCreate(SQLiteDatabase db) {
+		
 		String query;		
 		query = "CREATE TABLE Exercise ( ExerId INTEGER PRIMARY KEY, "
 				+ "Name STRING, Date STRING, Latitude REAL, Longitude REAL)";
