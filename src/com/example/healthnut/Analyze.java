@@ -1,9 +1,13 @@
 package com.example.healthnut;
 
+import java.util.ArrayList;
 import java.util.Calendar;
 
+import com.example.support.Exercise;
 import com.example.support.Food;
 
+import DBLayout.ExerDbController;
+import DBLayout.FoodDbController;
 import android.support.v7.app.ActionBarActivity;
 import android.support.v7.app.ActionBar;
 import android.support.v4.app.Fragment;
@@ -25,6 +29,9 @@ import android.widget.Toast;
 import android.os.Build;
 
 public class Analyze extends ActionBarActivity {
+	
+	FoodDbController foodDb = new FoodDbController(this);
+	ExerDbController exerDb = new ExerDbController(this);
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -41,28 +48,19 @@ public class Analyze extends ActionBarActivity {
 		final TextView exercise_view = (TextView) findViewById(R.id.exercise_view);
 		
 		
-		
-		LocationManager locationManager = (LocationManager)
-				getSystemService(Context.LOCATION_SERVICE);
-		Criteria criteria = new Criteria();
-	    String provider = locationManager.getBestProvider(criteria, false);
-	    Location location = locationManager.getLastKnownLocation(provider);
-	    double longitude = location.getLongitude();
-		double latitude = location.getLatitude();
-		
-		
-		Food testfood = new Food(100,  "Burger", 1000, "Lunch", "242014", latitude, longitude );
-		
-		testfood.printtoView(food_view, this);
-		
-		
-		
 		Calendar c = Calendar.getInstance(); 
 		int day = c.get(Calendar.DAY_OF_MONTH);
 		int month = c.get(Calendar.MONTH);
 		int year = c.get(Calendar.YEAR);
 		
 		String dateId = Integer.toString(day)+Integer.toString(month)+Integer.toString(year);
+		
+		ArrayList<Food> foodList = foodDb.getFoodByDate(dateId);
+		food_view.setText("Today's Food: \n" + foodList.toString());
+		 
+		
+		ArrayList<Exercise> exerciseList = exerDb.getExerByDate(dateId);
+		exercise_view.setText("Today's Exercise: \n" + exerciseList.toString());
 		
 		Log.i("A", Integer.toString(day));
 		Log.i("A", Integer.toString(month));

@@ -40,6 +40,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -65,6 +66,11 @@ public class SocialNetwork extends ActionBarActivity{
 		
 		final Button main_menu = (Button) findViewById(R.id.main_menu);
 		final Button post = (Button) findViewById(R.id.post);
+		final EditText day = (EditText) findViewById(R.id.day);
+		final EditText month = (EditText) findViewById(R.id.month);
+		final EditText year = (EditText) findViewById(R.id.year);
+		
+		
 		/*imageGallery=(LinearLayout)findViewById(R.id.linearImage);
 		Log.i("SN", "Got Buttons");
 		//for(int i=0; i<lengthOfImageIdArray; i++){
@@ -98,8 +104,13 @@ public class SocialNetwork extends ActionBarActivity{
         main_menu.setOnClickListener(new View.OnClickListener() {
         	
             public void onClick(View arg0) {
+            	int iday = Integer.parseInt(day.getText().toString());
+        		int imonth = Integer.parseInt(month.getText().toString());
+        		int iyear = Integer.parseInt(year.getText().toString());
+        		String dateID = Integer.toString(iday)+Integer.toString(imonth)+Integer.toString(iyear);
                 //Starting a new Intent
                 Intent nextScreen = new Intent(getApplicationContext(),  MainActivity.class);
+                nextScreen.putExtra("date", dateID);
                 startActivity(nextScreen);
 
             }

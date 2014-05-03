@@ -57,12 +57,13 @@ public class AddExercise extends ActionBarActivity {
             	//create location
             	double latitude = 0.0;
             	double longitude = 0.0;
-            	/*LocationManager locationManager = (LocationManager)
+            	LocationManager locationManager = (LocationManager)
         				getSystemService(Context.LOCATION_SERVICE);
         		Criteria criteria = new Criteria();
         	    String provider = locationManager.getBestProvider(criteria, false);
+        	    Location location = locationManager.getLastKnownLocation(provider);
         	    longitude = location.getLongitude();
-        		latitude = location.getLatitude();*/
+        		latitude = location.getLatitude();
             	
             	//create date
             	Calendar c = Calendar.getInstance(); 

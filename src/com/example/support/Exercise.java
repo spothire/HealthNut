@@ -10,6 +10,7 @@ import android.location.Geocoder;
 import android.widget.TextView;
 
 public class Exercise implements java.io.Serializable{
+
 	int exer_id;
 	String exer_name;
 	String date;
@@ -81,6 +82,13 @@ public class Exercise implements java.io.Serializable{
 		text.append("Address: " + address + "\n");
 		text.append("City: " + city + "\n");
 		text.append("Country: " + country + "\n\n");
+	}
+	
+	@Override
+	public String toString() {
+		return "Exercise [exer_id=" + exer_id + ", exer_name=" + exer_name
+				+ ", date=" + date + ", Latitude=" + Latitude + ", Longitude="
+				+ Longitude + "]";
 	}
 		
 }

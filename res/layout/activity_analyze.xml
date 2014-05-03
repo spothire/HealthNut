@@ -1,13 +1,9 @@
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
+<RelativeLayout xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/container"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="com.example.healthnut.Analyze"
-    tools:ignore="MergeRootFrame" >
-
-
-
+    tools:ignore="MergeRootFrame" xmlns:android="http://schemas.android.com/apk/res/android">
 
     <Button
         android:id="@+id/main_menu"
@@ -38,28 +34,41 @@
         android:text="@string/analyze"
         android:textAppearance="?android:attr/textAppearanceLarge" />
 
-    <ScrollView
+   <ScrollView
         android:id="@+id/scrollView1"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_height="100dp"
         android:layout_alignParentLeft="true"
         android:layout_alignRight="@+id/textView1"
         android:layout_below="@+id/textView2"
         android:layout_marginLeft="28dp"
         android:layout_marginTop="20dp" >
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical" >
+       <TextView
+           android:id="@+id/food_vew"
+           android:layout_width="match_parent"
+           android:layout_height="wrap_content"
+           android:text="" />
+
+    </ScrollView>
+
+    <ScrollView
+        android:id="@+id/scrollView2"
+        android:layout_width="wrap_content"
+        android:layout_height="100dp"
+        android:layout_alignLeft="@+id/scrollView1"
+        android:layout_alignRight="@+id/scrollView1"
+        android:layout_below="@+id/scrollView1"
+        android:layout_marginTop="26dp" >
+
+    
 
             <TextView
-                android:id="@+id/food_vew"
+                android:id="@+id/exercise_view"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="" />
 
-        </LinearLayout>
     </ScrollView>
 
     <TextView
@@ -68,30 +77,6 @@
         android:layout_height="wrap_content"
         android:layout_alignParentLeft="true"
         android:layout_below="@+id/scrollView1"
-        android:layout_marginTop="32dp"
         android:text="@string/protein" />
-
-    <ScrollView
-        android:id="@+id/scrollView2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/scrollView1"
-        android:layout_alignRight="@+id/scrollView1"
-        android:layout_below="@+id/textView3"
-        android:layout_marginTop="26dp" >
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical" >
-
-            <TextView
-                android:id="@+id/exercise_view"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="" />
-
-        </LinearLayout>
-    </ScrollView>
 
 </RelativeLayout>

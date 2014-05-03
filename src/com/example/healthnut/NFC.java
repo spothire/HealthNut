@@ -1,11 +1,16 @@
 package com.example.healthnut;
 
+import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.File;
+import java.io.IOException;
+import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.nio.charset.Charset;
+import java.util.List;
+import java.util.Locale;
 
-import com.example.healthnut.SocialNetwork.PlaceholderFragment;
+
 import com.example.support.Food;
 
 import android.support.v7.app.ActionBarActivity;
@@ -16,7 +21,9 @@ import android.annotation.TargetApi;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
+import android.location.Address;
 import android.location.Criteria;
+import android.location.Geocoder;
 import android.location.Location;
 import android.location.LocationManager;
 import android.net.Uri;
@@ -69,6 +76,62 @@ public class NFC extends Activity implements CreateNdefMessageCallback,
         mNfcAdapter.setNdefPushMessageCallback(this, this);
         // Register callback to listen for message-sent success
         mNfcAdapter.setOnNdefPushCompleteCallback(this, this);
+        final Button main_menu = (Button) findViewById(R.id.nfc_main);
+        
+        Intent i = getIntent();
+        
+        String dateID = i.getStringExtra("date");
+        
+        
+        
+        main_menu.setOnClickListener(new View.OnClickListener() {
+        	
+            public void onClick(View arg0) {
+                //Starting a new Intent
+                Intent nextScreen = new Intent(getApplicationContext(),  MainActivity.class);
+                startActivity(nextScreen);
+
+            }
+        });
+        
+        
+    }
+    
+    private String serialize(Food myObject){
+    	 String serializedObject = "";
+
+    	 // serialize the object
+    	 try {
+    	     ByteArrayOutputStream bo = new ByteArrayOutputStream();
+    	     ObjectOutputStream so = new ObjectOutputStream(bo);
+    	     so.writeObject(myObject);
+    	     so.flush();
+    	     serializedObject = bo.toString();
+    	 } catch (Exception e) {
+    	     System.out.println(e);
+    	     System.exit(1);
+    	 }
+    	 return serializedObject;
+    	
+    	
+    }
+    
+    private Food deserialize(String serializedObject){
+    	 // deserialize the object
+    	Food obj = null;
+    	 try {
+    	     byte b[] = serializedObject.getBytes(); 
+    	     ByteArrayInputStream bi = new ByteArrayInputStream(b);
+    	     ObjectInputStream si = new ObjectInputStream(bi);
+    	     obj = (Food) si.readObject();
+    	 } catch (Exception e) {
+    	     System.out.println(e);
+    	     System.exit(1);
+    	 }
+    	 
+    	 
+		return obj;
+    	
     }
 
 
@@ -77,10 +140,20 @@ public class NFC extends Activity implements CreateNdefMessageCallback,
      */
     @Override
     public NdefMessage createNdefMessage(NfcEvent event) {
-        Time time = new Time();
-        time.setToNow();
-        String text = ("Beam me up!\n\n" +
-                "Beam Time: " + time.format("%H:%M:%S"));
+    	
+    	LocationManager locationManager = (LocationManager)
+				getSystemService(Context.LOCATION_SERVICE);
+		Criteria criteria = new Criteria();
+	    String provider = locationManager.getBestProvider(criteria, false);
+	    Location location = locationManager.getLastKnownLocation(provider);
+	    double longitude = location.getLongitude();
+		double latitude = location.getLatitude();
+		
+		
+		Food testfood = new Food(100,  "Burger", 1000, "Lunch", "242014", latitude, longitude );
+		
+
+        String text = serialize(testfood);
         NdefMessage msg = new NdefMessage(
                 new NdefRecord[] { createMimeRecord(
                         "application/com.example.healthnut", text.getBytes())
@@ -143,7 +216,10 @@ public class NFC extends Activity implements CreateNdefMessageCallback,
         // only one message sent during the beam
         NdefMessage msg = (NdefMessage) rawMsgs[0];
         // record 0 contains the MIME type, record 1 is the AAR, if present
-        mInfoText.setText(new String(msg.getRecords()[0].getPayload()));
+     
+        String ndefinput = new String(msg.getRecords()[0].getPayload());
+        mInfoText.setText(ndefinput);
+       // Food newFood = deserialize(ndefinput);
     }
 
     /**

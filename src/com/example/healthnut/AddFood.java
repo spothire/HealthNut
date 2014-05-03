@@ -1,6 +1,7 @@
 package com.example.healthnut;
 
 import java.io.File;
+import java.util.ArrayList;
 import java.util.Calendar;
 
 import com.example.support.Food;
@@ -93,13 +94,13 @@ public class AddFood extends ActionBarActivity {
             	//create location
             	double latitude = 0.0;
             	double longitude = 0.0;
-            	/*LocationManager locationManager = (LocationManager)
+            	LocationManager locationManager = (LocationManager)
         				getSystemService(Context.LOCATION_SERVICE);
         		Criteria criteria = new Criteria();
         	    String provider = locationManager.getBestProvider(criteria, false);
         	    Location location = locationManager.getLastKnownLocation(provider);
         	    longitude = location.getLongitude();
-        		latitude = location.getLatitude();*/
+        		latitude = location.getLatitude();
             	
                 // Receiving the Data
                 String type = i.getStringExtra("type");
@@ -112,9 +113,24 @@ public class AddFood extends ActionBarActivity {
                 	cals = Integer.parseInt(cals_str);
                 	Food f = new Food(id, name, cals, type, dateStr, latitude, longitude);
                 	foodDb.insertFood(f);
-                	Toast.makeText(getApplicationContext(), name + " " + id + 
-                			" " + cals_str + " " + type + " "+ dateStr + " " +
-                			latitude + " " + longitude, Toast.LENGTH_SHORT).show();
+                	
+                	Food pullF = foodDb.readFood(id);
+                	if (pullF!=null) {
+                		Toast.makeText(getApplicationContext(), pullF.toString(), Toast.LENGTH_SHORT).show();
+                	}
+                	else 
+                    	Toast.makeText(getApplicationContext(), name + " " + id + 
+                    			" " + cals_str + " " + type + " "+ dateStr + " " +
+                    			latitude + " " + longitude, Toast.LENGTH_SHORT).show();
+                	
+                	/*ArrayList<Food> foodList = foodDb.getFoodByDate(dateStr);
+                	if (foodList!=null) {
+                		Toast.makeText(getApplicationContext(), foodList.toString(), Toast.LENGTH_SHORT).show();
+                	}
+                	else {
+                		Toast.makeText(getApplicationContext(), "null", Toast.LENGTH_SHORT).show();
+                	}*/
+
                 } catch (NumberFormatException nfe) {
                 	Toast.makeText(getApplicationContext(), 
                 			"Please input integer in calories field.", Toast.LENGTH_SHORT).show();

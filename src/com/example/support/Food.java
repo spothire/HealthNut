@@ -11,7 +11,7 @@ import android.widget.TextView;
 
 public class Food implements java.io.Serializable {
 
-	 int food_id;
+	int food_id;
 	 String food_name;
 	 int food_calories;
 	 String type;
@@ -82,7 +82,16 @@ public class Food implements java.io.Serializable {
 		this.longitude = longitude;
 	}
 	
-	
+	@Override
+	public String toString() {
+		return "Food Name: " + this.food_name + "\n" +
+				"Calories: " + this.food_calories + "\n" +
+				"Type: " + this.type + "\n" +
+				"Latitude: " + this.latitude +"\n" +
+				"Longitude " + this.longitude +"\n\n";
+		
+	}
+
 	public void printtoView(TextView text, Context con){
 		text.append("Food Name: " + this.food_name + "\n");
 		text.append("Calories: " + this.food_calories + "\n");

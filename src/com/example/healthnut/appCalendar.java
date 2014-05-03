@@ -1,6 +1,9 @@
 package com.example.healthnut;
 
+import java.util.ArrayList;
 import java.util.Calendar;
+
+import com.example.support.Food;
 
 import DBLayout.ExerDbController;
 import DBLayout.FoodDbController;
@@ -65,12 +68,10 @@ public class appCalendar extends Activity {
 		StringBuilder sb = new StringBuilder().append(day).append(month).append(year);
 		String searchDate = sb.toString();
 
- 
-		// set current date into textview
-		tvDisplayDate.setText(new StringBuilder()
-			// Month is 0 based, just add 1
-			.append(month + 1).append("-").append(day).append("-")
-			.append(year).append(" "));
+		ArrayList<Food> foodList = foodDb.getFoodByDate(searchDate);
+		
+		String curDate = (new StringBuilder().append(month + 1).append("-").append(day).append("-").append(year).append(" ")).toString();
+		tvDisplayDate.setText("Current Date:"+curDate+"\n"+foodList.toString());
  
 		// set current date into datepicker
 		dpResult.init(year, month, day, null);
@@ -115,10 +116,13 @@ public class appCalendar extends Activity {
 			month = selectedMonth;
 			day = selectedDay;
  
-			// set selected date into textview
-			tvDisplayDate.setText(new StringBuilder().append(month + 1)
-			   .append("-").append(day).append("-").append(year)
-			   .append(" "));
+			StringBuilder sb = new StringBuilder().append(day).append(month).append(year);
+			String searchDate = sb.toString();
+
+			ArrayList<Food> foodList = foodDb.getFoodByDate(searchDate);
+			
+			String curDate = (new StringBuilder().append(month + 1).append("-").append(day).append("-").append(year).append(" ")).toString();
+			tvDisplayDate.setText("Current Date:"+curDate+"\n"+foodList.toString());
  
 			// set selected date into datepicker also
 			dpResult.init(year, month, day, null);

@@ -55,7 +55,7 @@ public class FoodDbController extends SQLiteOpenHelper implements Serializable{
 		db.insert("Food", null, values);
 		db.close();
 		
-		Log.d(LOGCAT,"Food"+f.getFood_id()+" Inserted");
+		Log.d(LOGCAT,"Food "+f.getFood_id()+" Inserted");
 	}
 	
 	/**
@@ -63,19 +63,21 @@ public class FoodDbController extends SQLiteOpenHelper implements Serializable{
 	 * @param id
 	 * @return row with foodId =id as Food item
 	 */
-	public Food readFood(int id) {
-		HashMap<String, Integer> row = new HashMap<String, Integer>();
-		SQLiteDatabase database = this.getReadableDatabase();
-		String selectQuery = "SELECT * FROM Food where FoodId='"+id+"'";
-		Cursor cursor = database.rawQuery(selectQuery, null);
-		if (cursor.moveToFirst()) { 
-			Food retFood = new Food(cursor.getInt(1), cursor.getString(2), 
-					cursor.getInt(3), cursor.getString(4), cursor.getString(5),
-					cursor.getDouble(6), cursor.getDouble(7));
-			return retFood;
-		}
-	
-		return null;
+	public Food readFood(int id) {	
+		SQLiteDatabase db = this.getReadableDatabase();
+	    String selectQuery = "SELECT  * FROM Food WHERE FoodId"
+	        + " = " + id;
+	    Log.e("Database", selectQuery);
+	    
+	    Cursor c = db.rawQuery(selectQuery, null);
+	    if (c != null) {
+	        c.moveToFirst();
+		    Food retFood = new Food(c.getInt(0), c.getString(1), 
+					c.getInt(2), c.getString(3), c.getString(4),
+					c.getDouble(5), c.getDouble(6));
+		    return retFood;
+	    }
+	    else return null;
 	}
 	
 	/**
@@ -86,15 +88,16 @@ public class FoodDbController extends SQLiteOpenHelper implements Serializable{
 	public ArrayList<Food> getFoodByDate(String date) {
 		ArrayList<Food> foodList = new ArrayList<Food>();
 		String selQuery = "SELECT * FROM Food where Date='"+date+"'";
-		
+		Log.e("Database", selQuery);
+	    
 		SQLiteDatabase db = this.getWritableDatabase();
 		Cursor cursor = db.rawQuery(selQuery, null);
 		
 		if (cursor.moveToFirst()) {
 			do {
-				Food f = new Food(cursor.getInt(1), cursor.getString(2), 
-					cursor.getInt(3), cursor.getString(4), cursor.getString(5),
-					cursor.getDouble(6), cursor.getDouble(7));
+				Food f = new Food(cursor.getInt(0), cursor.getString(1), 
+					cursor.getInt(2), cursor.getString(3), cursor.getString(4),
+					cursor.getDouble(5), cursor.getDouble(6));
 				//add food to arraylist
 				foodList.add(f);
 			} while (cursor.moveToNext());

@@ -60,8 +60,8 @@ public class ExerDbController extends SQLiteOpenHelper implements Serializable {
 		String selectQuery = "SELECT * FROM Exercise where ExerId='"+id+"'";
 		Cursor cursor = database.rawQuery(selectQuery, null);
 		if (cursor.moveToFirst()) { 
-			Exercise ret = new Exercise(cursor.getInt(1), cursor.getString(2), 
-					cursor.getString(3), cursor.getDouble(4), cursor.getDouble(5));
+			Exercise ret = new Exercise(cursor.getInt(0), cursor.getString(1), 
+					cursor.getString(2), cursor.getDouble(3), cursor.getDouble(4));
 			return ret;
 		}
 	
@@ -82,8 +82,8 @@ public class ExerDbController extends SQLiteOpenHelper implements Serializable {
 		
 		if (cursor.moveToFirst()) {
 			do {
-				Exercise e = new Exercise(cursor.getInt(1), cursor.getString(2), 
-					cursor.getString(3), cursor.getDouble(4), cursor.getDouble(5));
+				Exercise e = new Exercise(cursor.getInt(0), cursor.getString(1), 
+					cursor.getString(2), cursor.getDouble(3), cursor.getDouble(4));
 				exerList.add(e);
 			} while (cursor.moveToNext());
 		}
