@@ -984,7 +984,7 @@ containing a value of this type.
         public static final int ic_launcher=0x7f020057;
     }
     public static final class id {
-        public static final int HSVImage=0x7f050056;
+        public static final int HSVImage=0x7f050054;
         public static final int action_bar=0x7f05001c;
         public static final int action_bar_activity_content=0x7f050015;
         public static final int action_bar_container=0x7f05001b;
@@ -996,26 +996,26 @@ containing a value of this type.
         public static final int action_menu_divider=0x7f050016;
         public static final int action_menu_presenter=0x7f050017;
         public static final int action_mode_close_button=0x7f050024;
-        public static final int action_settings=0x7f050061;
+        public static final int action_settings=0x7f050064;
         public static final int activity_chooser_view_content=0x7f050025;
-        public static final int add_breakfast=0x7f05005b;
-        public static final int add_dinner=0x7f05005e;
+        public static final int add_breakfast=0x7f05005e;
+        public static final int add_dinner=0x7f050061;
         public static final int add_exercise=0x7f050040;
-        public static final int add_lunch=0x7f05005c;
-        public static final int add_other=0x7f05005f;
+        public static final int add_lunch=0x7f05005f;
+        public static final int add_other=0x7f050062;
         public static final int always=0x7f05000b;
-        public static final int analyze=0x7f050050;
+        public static final int analyze=0x7f050051;
         public static final int beginning=0x7f050011;
-        public static final int calendar=0x7f050051;
+        public static final int btnChangeDate=0x7f05004b;
+        public static final int calendar=0x7f050052;
         public static final int checkbox=0x7f05002d;
         public static final int collapseActionView=0x7f05000d;
         public static final int container=0x7f05003c;
-        public static final int date=0x7f05004b;
-        public static final int datePicker1=0x7f050052;
-        public static final int day_summary=0x7f05004d;
+        public static final int day=0x7f05005a;
         public static final int default_activity_button=0x7f050028;
         public static final int dialog=0x7f05000e;
         public static final int disableHome=0x7f050008;
+        public static final int dpResult=0x7f05004e;
         public static final int dropdown=0x7f05000f;
         public static final int edit_query=0x7f050030;
         public static final int end=0x7f050013;
@@ -1032,16 +1032,18 @@ containing a value of this type.
         public static final int icon=0x7f05002a;
         public static final int ifRoom=0x7f05000a;
         public static final int image=0x7f050027;
-        public static final int linearImage=0x7f050057;
+        public static final int lblDate=0x7f05004c;
+        public static final int linearImage=0x7f050055;
         public static final int listMode=0x7f050001;
         public static final int list_item=0x7f050029;
         public static final int mImageView=0x7f050044;
         public static final int mTextView=0x7f050059;
         public static final int main_menu=0x7f05003f;
         public static final int middle=0x7f050012;
+        public static final int month=0x7f05005b;
         public static final int never=0x7f050009;
-        public static final int nfc_main=0x7f050055;
-        public static final int nfc_text=0x7f050054;
+        public static final int nfc_main=0x7f050057;
+        public static final int nfc_text=0x7f050056;
         public static final int none=0x7f050010;
         public static final int normal=0x7f050000;
         public static final int post=0x7f050058;
@@ -1064,24 +1066,25 @@ containing a value of this type.
         public static final int showCustom=0x7f050007;
         public static final int showHome=0x7f050004;
         public static final int showTitle=0x7f050006;
-        public static final int social_network=0x7f05004f;
+        public static final int social_network=0x7f050050;
         public static final int spinner1=0x7f050053;
         public static final int split_action_bar=0x7f05001e;
         public static final int submit_area=0x7f050039;
-        public static final int summary=0x7f05004c;
         public static final int tabMode=0x7f050002;
         public static final int textView1=0x7f05003d;
         public static final int textView2=0x7f050045;
         public static final int textView3=0x7f050048;
-        public static final int textView4=0x7f05005a;
-        public static final int textView5=0x7f05005d;
-        public static final int textView6=0x7f050060;
+        public static final int textView4=0x7f05005d;
+        public static final int textView5=0x7f050060;
+        public static final int textView6=0x7f050063;
         public static final int title=0x7f05002b;
         public static final int top_action_bar=0x7f050020;
+        public static final int tvDate=0x7f05004d;
         public static final int up=0x7f050021;
         public static final int useLogo=0x7f050003;
-        public static final int viewtoday=0x7f05004e;
+        public static final int viewtoday=0x7f05004f;
         public static final int withText=0x7f05000c;
+        public static final int year=0x7f05005c;
     }
     public static final class integer {
         /**  The maximum number of action buttons that should be permitted within
@@ -1211,11 +1214,13 @@ containing a value of this type.
         public static final int calendar=0x7f0a0012;
         public static final int camera=0x7f0a0020;
         public static final int carbs=0x7f0a0025;
+        public static final int day=0x7f0a0029;
         public static final int dinner=0x7f0a001a;
         public static final int exercise=0x7f0a0017;
         public static final int hello_world=0x7f0a000e;
         public static final int lunch=0x7f0a0019;
         public static final int main_menu=0x7f0a0010;
+        public static final int month=0x7f0a002a;
         public static final int other=0x7f0a001b;
         public static final int post=0x7f0a0028;
         public static final int protein=0x7f0a0026;
@@ -1225,11 +1230,12 @@ containing a value of this type.
         public static final int title_activity_add_food=0x7f0a001e;
         public static final int title_activity_analyze=0x7f0a0024;
         public static final int title_activity_calendar=0x7f0a0022;
-        public static final int title_activity_nfc=0x7f0a0029;
+        public static final int title_activity_nfc=0x7f0a002c;
         public static final int title_activity_social_network=0x7f0a0027;
         public static final int title_activity_today=0x7f0a0015;
         public static final int todays_nutrition=0x7f0a0016;
         public static final int view_today=0x7f0a0011;
+        public static final int year=0x7f0a002b;
     }
     public static final class style {
         /** 

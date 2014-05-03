@@ -29,6 +29,9 @@
     <string name="protein">Exercise Details for today:</string>
     <string name="title_activity_social_network">SocialNetwork</string>
     <string name="post">Post</string>
+    <string name="day">Day</string>
+    <string name="month">Month</string>
+    <string name="year">Year</string>
     <string name="title_activity_nfc">NFC</string>
 
 </resources>

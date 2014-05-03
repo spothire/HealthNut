@@ -8,8 +8,12 @@ import DBLayout.ExerDbController;
 import android.support.v7.app.ActionBarActivity;
 import android.support.v7.app.ActionBar;
 import android.support.v4.app.Fragment;
+import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
+import android.location.Criteria;
+import android.location.Location;
+import android.location.LocationManager;
 import android.media.Ringtone;
 import android.media.RingtoneManager;
 import android.net.Uri;
@@ -49,6 +53,16 @@ public class AddExercise extends ActionBarActivity {
             	int id = (int) (System.currentTimeMillis() / 1000L);
             	
             	String name = exer.getText().toString();
+
+            	//create location
+            	double latitude = 0.0;
+            	double longitude = 0.0;
+            	/*LocationManager locationManager = (LocationManager)
+        				getSystemService(Context.LOCATION_SERVICE);
+        		Criteria criteria = new Criteria();
+        	    String provider = locationManager.getBestProvider(criteria, false);
+        	    longitude = location.getLongitude();
+        		latitude = location.getLatitude();*/
             	
             	//create date
             	Calendar c = Calendar.getInstance(); 
@@ -58,10 +72,11 @@ public class AddExercise extends ActionBarActivity {
 
             	String dateStr = Integer.toString(day)+Integer.toString(month)+Integer.toString(year);
 
-            	Exercise eObj = new Exercise(id, name, dateStr, 0.0, 0.0);
+            	Exercise eObj = new Exercise(id, name, dateStr, latitude, longitude);
             	exerDb.insertExercise(eObj);
             	
-            	Toast.makeText(getApplicationContext(), name + " " + id + " " + dateStr, Toast.LENGTH_SHORT).show();
+            	Toast.makeText(getApplicationContext(), name + " " + id + " " + dateStr
+            			+" "+latitude+" "+longitude, Toast.LENGTH_SHORT).show();
             	
             	try {
             	    Uri notification = RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION);

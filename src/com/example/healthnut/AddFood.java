@@ -9,8 +9,12 @@ import DBLayout.FoodDbController;
 import android.support.v7.app.ActionBarActivity;
 import android.support.v7.app.ActionBar;
 import android.support.v4.app.Fragment;
+import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
+import android.location.Criteria;
+import android.location.Location;
+import android.location.LocationManager;
 import android.media.Ringtone;
 import android.media.RingtoneManager;
 import android.net.Uri;
@@ -38,11 +42,7 @@ public class AddFood extends ActionBarActivity {
 	int id;
 
 	@Override
-	
-	
 	protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-	  
-
 		if (requestCode == CAPTURE_IMAGE_ACTIVITY_REQUEST_CODE) {
 	        if (resultCode == RESULT_OK) {
 	        	mImage = (ImageView) findViewById(R.id.mImageView);
@@ -59,6 +59,7 @@ public class AddFood extends ActionBarActivity {
 	        }
 	    }
 	}
+	
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_add_food);
@@ -67,15 +68,12 @@ public class AddFood extends ActionBarActivity {
 			getSupportFragmentManager().beginTransaction()
 					.add(R.id.container, new PlaceholderFragment()).commit();
 		}
-		
-		
+
 		final Button main_menu = (Button) findViewById(R.id.main_menu);
 		final Button add = (Button) findViewById(R.id.food_add);
 		final EditText food = (EditText) findViewById(R.id.food_input);
 		final EditText notes = (EditText) findViewById(R.id.food_notes);
 		
-		
-				
         add.setOnClickListener(new View.OnClickListener() {
 
             public void onClick(View arg0) {
@@ -92,6 +90,17 @@ public class AddFood extends ActionBarActivity {
 
             	String dateStr = Integer.toString(day)+Integer.toString(month)+Integer.toString(year);
             	
+            	//create location
+            	double latitude = 0.0;
+            	double longitude = 0.0;
+            	/*LocationManager locationManager = (LocationManager)
+        				getSystemService(Context.LOCATION_SERVICE);
+        		Criteria criteria = new Criteria();
+        	    String provider = locationManager.getBestProvider(criteria, false);
+        	    Location location = locationManager.getLastKnownLocation(provider);
+        	    longitude = location.getLongitude();
+        		latitude = location.getLatitude();*/
+            	
                 // Receiving the Data
                 String type = i.getStringExtra("type");
                 String name = food.getText().toString();
@@ -101,16 +110,16 @@ public class AddFood extends ActionBarActivity {
                 //insert into db
                 try {
                 	cals = Integer.parseInt(cals_str);
-                	Food f = new Food(id, name, cals, type, dateStr, 0.0, 0.0);
-                	//((FoodDbController) getIntent().getSerializableExtra("Food Db")).insertFood(f);
+                	Food f = new Food(id, name, cals, type, dateStr, latitude, longitude);
                 	foodDb.insertFood(f);
                 	Toast.makeText(getApplicationContext(), name + " " + id + 
-                			" " + cals_str + " " + type + " "+ dateStr, Toast.LENGTH_SHORT).show();
+                			" " + cals_str + " " + type + " "+ dateStr + " " +
+                			latitude + " " + longitude, Toast.LENGTH_SHORT).show();
                 } catch (NumberFormatException nfe) {
-                	Toast.makeText(getApplicationContext(), "Please input integer in calories field.", Toast.LENGTH_SHORT).show();
+                	Toast.makeText(getApplicationContext(), 
+                			"Please input integer in calories field.", Toast.LENGTH_SHORT).show();
                 }
-                
-                
+                                
                 Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
        
                 File imagesFolder = new File(Environment.getExternalStorageDirectory(), "MyImages"); 
@@ -129,7 +138,7 @@ public class AddFood extends ActionBarActivity {
             	    e.printStackTrace();
             	}
                 
-                startActivityForResult(intent, CAPTURE_IMAGE_ACTIVITY_REQUEST_CODE);
+                //startActivityForResult(intent, CAPTURE_IMAGE_ACTIVITY_REQUEST_CODE);
             }
         });
         
