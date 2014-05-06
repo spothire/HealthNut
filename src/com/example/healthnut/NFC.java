@@ -46,6 +46,8 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemSelectedListener;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -61,6 +63,7 @@ public class NFC extends Activity implements CreateNdefMessageCallback,
         OnNdefPushCompleteCallback {
     NfcAdapter mNfcAdapter;
     ArrayList<Food> foodList;
+    String nfcTag;
     TextView mInfoText;
     Spinner spin;
     FoodDbController foodDb = new FoodDbController(this);
@@ -106,9 +109,35 @@ public class NFC extends Activity implements CreateNdefMessageCallback,
         		android.R.layout.simple_spinner_item, list);
         	dataAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spin.setAdapter(dataAdapter);
-        Toast.makeText(getApplicationContext(), spin.getSelectedItem().toString(), Toast.LENGTH_SHORT).show();
+        Toast.makeText(this, spin.getSelectedItem().toString(), Toast.LENGTH_SHORT).show();
         
         }
+        
+        
+            
+
+        spin.setOnItemSelectedListener(new OnItemSelectedListener() {
+            public void onItemSelected(AdapterView<?> parentView, View selectedItemView, int position, long id) {
+                String Name = spin.getSelectedItem().toString();
+                
+                Food selectedFood = null;
+                for(int i = 0; i<foodList.size();i++){
+                	if(foodList.get(i).getFood_name() == Name ){
+                		selectedFood = foodList.get(i);
+                	}
+                }
+                nfcTag = selectedFood.toString();
+                mInfoText.setText(nfcTag);
+            }
+
+			@Override
+			public void onNothingSelected(AdapterView<?> arg0) {
+				// TODO Auto-generated method stub
+				
+			}
+
+
+        });
         
         main_menu.setOnClickListener(new View.OnClickListener() {
         	
@@ -122,44 +151,6 @@ public class NFC extends Activity implements CreateNdefMessageCallback,
         
         
     }
-    
-    private String serialize(Food myObject){
-    	 String serializedObject = "";
-
-    	 // serialize the object
-    	 try {
-    	     ByteArrayOutputStream bo = new ByteArrayOutputStream();
-    	     ObjectOutputStream so = new ObjectOutputStream(bo);
-    	     so.writeObject(myObject);
-    	     so.flush();
-    	     serializedObject = bo.toString();
-    	 } catch (Exception e) {
-    	     System.out.println(e);
-    	     System.exit(1);
-    	 }
-    	 return serializedObject;
-    	
-    	
-    }
-    
-    private Food deserialize(String serializedObject){
-    	 // deserialize the object
-    	Food obj = null;
-    	 try {
-    	     byte b[] = serializedObject.getBytes(); 
-    	     ByteArrayInputStream bi = new ByteArrayInputStream(b);
-    	     ObjectInputStream si = new ObjectInputStream(bi);
-    	     obj = (Food) si.readObject();
-    	 } catch (Exception e) {
-    	     System.out.println(e);
-    	     System.exit(1);
-    	 }
-    	 
-    	 
-		return obj;
-    	
-    }
-
 
     /**
      * Implementation for the CreateNdefMessageCallback interface
@@ -168,20 +159,17 @@ public class NFC extends Activity implements CreateNdefMessageCallback,
     public NdefMessage createNdefMessage(NfcEvent event) {
     	
     	
-		
-		
-		Food sendFood = null;
-    	String name = spin.getSelectedItem().toString();
+    	/*String name = spin.getSelectedItem().toString();
     	Toast.makeText(getApplicationContext(), name, Toast.LENGTH_SHORT).show();
-    	
+    	int select = 0;
     	for(int i = 0; i< foodList.size();i++){
     		if(name.equals(foodList.get(i).getFood_name())){
-    			sendFood = foodList.get(i);
+    			select = i;
     		}
-    	}
+    	}*/
     	
     	
-        String text = serialize(sendFood);
+        String text = nfcTag;
         NdefMessage msg = new NdefMessage(
                 new NdefRecord[] { createMimeRecord(
                         "application/com.example.healthnut", text.getBytes())
