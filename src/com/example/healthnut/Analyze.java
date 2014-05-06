@@ -6,8 +6,7 @@ import java.util.Calendar;
 import com.example.support.Exercise;
 import com.example.support.Food;
 
-import DBLayout.ExerDbController;
-import DBLayout.FoodDbController;
+import DBLayout.SqlLiteController;
 import android.support.v7.app.ActionBarActivity;
 import android.support.v7.app.ActionBar;
 import android.support.v4.app.Fragment;
@@ -30,8 +29,7 @@ import android.os.Build;
 
 public class Analyze extends ActionBarActivity {
 	
-	FoodDbController foodDb = new FoodDbController(this);
-	ExerDbController exerDb = new ExerDbController(this);
+	SqlLiteController dbController = new SqlLiteController(this);
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -55,12 +53,12 @@ public class Analyze extends ActionBarActivity {
 		
 		String dateId = Integer.toString(day)+Integer.toString(month)+Integer.toString(year);
 		
-		ArrayList<Food> foodList = foodDb.getFoodByDate(dateId);
+		ArrayList<Food> foodList = dbController.getFoodByDate(dateId);
 		food_view.setText("Today's Food: \n" + foodList.toString());
 		 
 		
-		//ArrayList<Exercise> exerciseList = exerDb.getExerByDate(dateId);
-		//exercise_view.setText("Today's Exercise: \n" + exerciseList.toString());
+		ArrayList<Exercise> exerciseList = dbController.getExerByDate(dateId);
+		exercise_view.setText("Today's Exercise: \n" + exerciseList.toString());
 		
 		Log.i("A", Integer.toString(day));
 		Log.i("A", Integer.toString(month));

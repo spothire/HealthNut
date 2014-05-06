@@ -13,7 +13,7 @@ import java.util.Locale;
 
 import com.example.support.Food;
 
-import DBLayout.FoodDbController;
+import DBLayout.SqlLiteController;
 import android.support.v7.app.ActionBarActivity;
 import android.support.v7.app.ActionBar;
 import android.support.v4.app.Fragment;
@@ -66,7 +66,7 @@ public class NFC extends Activity implements CreateNdefMessageCallback,
     String nfcTag;
     TextView mInfoText;
     Spinner spin;
-    FoodDbController foodDb = new FoodDbController(this);
+    SqlLiteController foodDb = new SqlLiteController(this);
     private static final int MESSAGE_SENT = 1;
 
     @Override

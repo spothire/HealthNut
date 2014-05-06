@@ -14,8 +14,8 @@ public class Exercise implements java.io.Serializable{
 	int exer_id;
 	String exer_name;
 	String date;
-	double Latitude;
-	double Longitude;
+	double latitude;
+	double longitude;
 	
 	public Exercise(int exer_id, String exer_name, String date,
 			double latitude, double longitude) {
@@ -23,24 +23,24 @@ public class Exercise implements java.io.Serializable{
 		this.exer_id = exer_id;
 		this.exer_name = exer_name;
 		this.date = date;
-		Latitude = latitude;
-		Longitude = longitude;
+		this.latitude = latitude;
+		this.longitude = longitude;
 	}
 
 	public double getLatitude() {
-		return Latitude;
+		return latitude;
 	}
 
 	public void setLatitude(double latitude) {
-		Latitude = latitude;
+		this.latitude = latitude;
 	}
 
 	public double getLongitude() {
-		return Longitude;
+		return longitude;
 	}
 
 	public void setLongitude(double longitude) {
-		Longitude = longitude;
+		this.longitude = longitude;
 	}
 	
 	public int getExer_id() {
@@ -65,12 +65,12 @@ public class Exercise implements java.io.Serializable{
 	}
 	
 	public void printtoView(TextView text, Context con){
-		text.append("Food Name: " + this.exer_name + "\n");
+		text.append("Exercise Name: " + this.exer_name + "\n");
 		Geocoder geocoder;
 		List<Address> addresses = null;
 		geocoder = new Geocoder(con, Locale.getDefault());
 		try {
-			addresses = geocoder.getFromLocation(Latitude, Longitude, 1);
+			addresses = geocoder.getFromLocation(latitude, longitude, 1);
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -86,9 +86,9 @@ public class Exercise implements java.io.Serializable{
 	
 	@Override
 	public String toString() {
-		return "Exercise [exer_id=" + exer_id + ", exer_name=" + exer_name
-				+ ", date=" + date + ", Latitude=" + Latitude + ", Longitude="
-				+ Longitude + "]";
+		return "Exercise: " + this.exer_name + "\n" +
+				"Latitude: " + this.latitude + "\n" +
+				"Longitude: " + this.longitude + "\n";
 	}
 		
 }

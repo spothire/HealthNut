@@ -1,7 +1,6 @@
 package com.example.healthnut;
 
-import DBLayout.ExerDbController;
-import DBLayout.FoodDbController;
+import DBLayout.SqlLiteController;
 import android.support.v7.app.ActionBarActivity;
 import android.support.v7.app.ActionBar;
 import android.support.v4.app.Fragment;
@@ -27,12 +26,6 @@ public class Today extends ActionBarActivity {
 					.add(R.id.container, new PlaceholderFragment()).commit();
 		}
 		
-		/*Bundle b = this.getIntent().getExtras();
-		if (b!=null) {
-			FoodDbController foodDb = (FoodDbController) b.getSerializable("Food Db");
-			ExerDbController exerDb = (ExerDbController) b.getSerializable("Exer Db");
-		}*/
-		
 		/**button code **/
 		final Button main_menu = (Button) findViewById(R.id.main_menu);
 		final Button exer = (Button) findViewById(R.id.add_exercise);
@@ -47,7 +40,6 @@ public class Today extends ActionBarActivity {
                 //Starting a new Intent
                 Intent nextScreen = new Intent(getApplicationContext(),  AddFood.class);
                 nextScreen.putExtra("type", "breakfast");
-                //nextScreen.putExtra("Food Db", getIntent().getSerializableExtra("Food Db"));
                 startActivity(nextScreen);
 
             }
@@ -58,7 +50,6 @@ public class Today extends ActionBarActivity {
                 //Starting a new Intent
             	Intent nextScreen = new Intent(getApplicationContext(),  AddFood.class);
                 nextScreen.putExtra("type", "lunch");
-                //nextScreen.putExtra("Food Db", getIntent().getSerializableExtra("Food Db"));
                 startActivity(nextScreen);
 
             }
@@ -69,7 +60,6 @@ public class Today extends ActionBarActivity {
                 //Starting a new Intent
             	Intent nextScreen = new Intent(getApplicationContext(),  AddFood.class);
                 nextScreen.putExtra("type", "dinner");
-                //nextScreen.putExtra("Food Db", getIntent().getSerializableExtra("Food Db"));
                 startActivity(nextScreen);
 
             }
@@ -80,7 +70,6 @@ public class Today extends ActionBarActivity {
                 //Starting a new Intent
             	Intent nextScreen = new Intent(getApplicationContext(),  AddFood.class);
                 nextScreen.putExtra("type", "snacks");
-                //nextScreen.putExtra("Food Db", getIntent().getSerializableExtra("Food Db"));
                 startActivity(nextScreen);
 
             }
@@ -91,7 +80,6 @@ public class Today extends ActionBarActivity {
             public void onClick(View arg0) {
                 //Starting a new Intent
                 Intent nextScreen = new Intent(getApplicationContext(),  AddExercise.class);
-                //nextScreen.putExtra("Exer Db", getIntent().getSerializableExtra("Exer Db"));
                 startActivity(nextScreen);
             }
         });

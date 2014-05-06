@@ -6,7 +6,7 @@ import java.util.Calendar;
 
 import com.example.support.Food;
 
-import DBLayout.FoodDbController;
+import DBLayout.SqlLiteController;
 import android.support.v7.app.ActionBarActivity;
 import android.support.v7.app.ActionBar;
 import android.support.v4.app.Fragment;
@@ -35,7 +35,7 @@ import android.provider.MediaStore;
 
 public class AddFood extends ActionBarActivity {
 	//public static final int MEDIA_TYPE_IMAGE = 1;
-	FoodDbController foodDb = new FoodDbController(this);
+	SqlLiteController foodDb = new SqlLiteController(this);
 	
 	private static final int CAPTURE_IMAGE_ACTIVITY_REQUEST_CODE = 100;
 	ImageView mImage;

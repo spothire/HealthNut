@@ -3,10 +3,10 @@ package com.example.healthnut;
 import java.util.ArrayList;
 import java.util.Calendar;
 
+import com.example.support.Exercise;
 import com.example.support.Food;
 
-import DBLayout.ExerDbController;
-import DBLayout.FoodDbController;
+import DBLayout.SqlLiteController;
 import android.support.v7.app.ActionBarActivity;
 import android.support.v7.app.ActionBar;
 import android.support.v4.app.Fragment;
@@ -30,8 +30,7 @@ import android.widget.Toast;
 import android.os.Build;
 
 public class appCalendar extends Activity {
-	FoodDbController foodDb = new FoodDbController(this);
-	ExerDbController exerDb = new ExerDbController(this);
+	SqlLiteController dbController = new SqlLiteController(this);
 	
 	private TextView tvDisplayDate;
 	private DatePicker dpResult;
@@ -68,10 +67,11 @@ public class appCalendar extends Activity {
 		StringBuilder sb = new StringBuilder().append(day).append(month).append(year);
 		String searchDate = sb.toString();
 
-		ArrayList<Food> foodList = foodDb.getFoodByDate(searchDate);
+		ArrayList<Food> foodList = dbController.getFoodByDate(searchDate);
+		ArrayList<Exercise> exerList = dbController.getExerByDate(searchDate);
 		
 		String curDate = (new StringBuilder().append(month + 1).append("-").append(day).append("-").append(year).append(" ")).toString();
-		tvDisplayDate.setText("Current Date:"+curDate+"\n"+foodList.toString());
+		tvDisplayDate.setText("Current Date:"+curDate+"\n"+foodList.toString()+"\n"+exerList.toString());
  
 		// set current date into datepicker
 		dpResult.init(year, month, day, null);
@@ -119,10 +119,11 @@ public class appCalendar extends Activity {
 			StringBuilder sb = new StringBuilder().append(day).append(month).append(year);
 			String searchDate = sb.toString();
 
-			ArrayList<Food> foodList = foodDb.getFoodByDate(searchDate);
+			ArrayList<Food> foodList = dbController.getFoodByDate(searchDate);
+			ArrayList<Exercise> exerList = dbController.getExerByDate(searchDate);
 			
 			String curDate = (new StringBuilder().append(month + 1).append("-").append(day).append("-").append(year).append(" ")).toString();
-			tvDisplayDate.setText("Current Date:"+curDate+"\n"+foodList.toString());
+			tvDisplayDate.setText("Current Date:"+curDate+"\n"+foodList.toString()+"\n"+exerList.toString());
  
 			// set selected date into datepicker also
 			dpResult.init(year, month, day, null);

@@ -4,7 +4,7 @@ import java.util.Calendar;
 
 import com.example.support.Exercise;
 
-import DBLayout.ExerDbController;
+import DBLayout.SqlLiteController;
 import android.support.v7.app.ActionBarActivity;
 import android.support.v7.app.ActionBar;
 import android.support.v4.app.Fragment;
@@ -31,7 +31,7 @@ import android.os.Build;
 import android.provider.MediaStore;
 
 public class AddExercise extends ActionBarActivity {
-	ExerDbController exerDb = new ExerDbController(this);
+	SqlLiteController exerDb = new SqlLiteController(this);
 	@Override
 	
 	protected void onCreate(Bundle savedInstanceState) {
@@ -76,7 +76,11 @@ public class AddExercise extends ActionBarActivity {
             	Exercise eObj = new Exercise(id, name, dateStr, latitude, longitude);
             	exerDb.insertExercise(eObj);
             	
-            	Toast.makeText(getApplicationContext(), name + " " + id + " " + dateStr
+            	Exercise pullE = exerDb.readExer(id);
+            	if (pullE!=null) {
+            		Toast.makeText(getApplicationContext(), pullE.toString(), Toast.LENGTH_SHORT).show();
+            	} else
+            		Toast.makeText(getApplicationContext(), name + " " + id + " " + dateStr
             			+" "+latitude+" "+longitude, Toast.LENGTH_SHORT).show();
             	
             	try {
