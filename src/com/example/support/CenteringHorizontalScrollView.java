@@ -9,19 +9,12 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 
 public class CenteringHorizontalScrollView extends HorizontalScrollView implements View.OnTouchListener {
-
 private Context mContext;
-
 private static final int SWIPE_PAGE_ON_FACTOR = 10;
-
 private int mActiveItem;
-
 private float mPrevScrollX;
-
 private boolean mStart;
-
 private int mItemWidth;
-
 View targetLeft, targetRight;
 ImageView leftImage, rightImage;
 

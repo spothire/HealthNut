@@ -1,15 +1,23 @@
 package com.example.support;
 
+import java.io.File;
 import java.io.IOException;
 import java.util.List;
 import java.util.Locale;
+
+import com.parse.ParseClassName;
+import com.parse.ParseFile;
+import com.parse.ParseObject;
+import com.parse.ParseUser;
 
 import android.content.Context;
 import android.location.Address;
 import android.location.Geocoder;
 import android.widget.TextView;
 
-public class Food implements java.io.Serializable {
+@ParseClassName("Food")
+
+public class Food extends ParseObject implements java.io.Serializable{
 
 	int food_id;
 	 String food_name;
@@ -17,8 +25,21 @@ public class Food implements java.io.Serializable {
 	 String type;
 	 String date;
 	 double latitude;
-	 double longitude;	
+	 double longitude;
+	 File image;
 	 
+	public File getImage() {
+		return image;
+	}
+
+	public void setImage(File image) {
+		this.image = image;
+	}
+	
+	public Food(){
+		
+	}
+
 	public Food(int food_id, String food_name, int food_calories, String type,
 			String date, double latitude, double longitude) {
 		super();
@@ -113,5 +134,37 @@ public class Food implements java.io.Serializable {
 		text.append("City: " + city + "\n");
 		text.append("Country: " + country + "\n\n");
 	}
+	
+    public String getTitle() {
+        return getString("title");
+    }
+ 
+    public void setTitle(String title) {
+        put("title", title);
+    }
+ 
+    public ParseUser getAuthor() {
+        return getParseUser("author");
+    }
+ 
+    public void setAuthor(ParseUser user) {
+        put("author", user);
+    }
+ 
+    public String getRating() {
+        return getString("rating");
+    }
+ 
+    public void setRating(String rating) {
+        put("rating", rating);
+    }
+ 
+    public ParseFile getPhotoFile() {
+        return getParseFile("photo");
+    }
+ 
+    public void setPhotoFile(ParseFile file) {
+        put("photo", file);
+    }
 	
 }

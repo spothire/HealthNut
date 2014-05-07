@@ -3,6 +3,7 @@
     android:id="@+id/container"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/bg"
     tools:context="com.example.healthnut.MainActivity"
     tools:ignore="MergeRootFrame" >
 
@@ -14,15 +15,9 @@
         android:layout_centerHorizontal="true"
         android:layout_marginTop="19dp"
         android:text="@string/main_menu"
+        android:background="@color/button_text"
+        android:textColor="@android:color/white"
         android:textAppearance="?android:attr/textAppearanceLarge" />
-
-    <Button
-        android:id="@+id/viewtoday"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/textView1"
-        android:layout_centerHorizontal="true"
-        android:text="@string/view_today" />
 
     <Button
         android:id="@+id/social_network"
@@ -31,6 +26,8 @@
         android:layout_below="@+id/analyze"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="25dp"
+        android:background="@color/button_text"
+        android:textColor="@android:color/white"
         android:text="@string/social_network" />
 
     <Button
@@ -40,6 +37,8 @@
         android:layout_below="@+id/viewtoday"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="20dp"
+        android:background="@color/button_text"
+        android:textColor="@android:color/white"
         android:text="@string/calendar" />
 
     <Button
@@ -49,6 +48,30 @@
         android:layout_below="@+id/calendar"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="30dp"
+        android:background="@color/button_text"
+        android:textColor="@android:color/white"
         android:text="@string/analyze" />
+
+    <Button
+        android:id="@+id/viewtoday"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/textView1"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="22dp"
+        android:background="@color/button_text"
+        android:text="@string/view_today"
+        android:textColor="@android:color/white" />
+
+    <Button
+        android:id="@+id/getim"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/viewtoday"
+        android:layout_below="@+id/social_network"
+        android:layout_marginTop="24dp"
+        android:background="@color/button_text"
+        android:text="@string/get_im"
+        android:textColor="@android:color/white" />
     
  </RelativeLayout>

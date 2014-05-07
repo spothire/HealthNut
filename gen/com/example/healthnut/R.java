@@ -794,10 +794,14 @@ containing a value of this type.
         public static final int abc_split_action_bar_is_narrow=0x7f060002;
     }
     public static final class color {
-        public static final int abc_search_url_text_holo=0x7f070003;
+        public static final int abc_search_url_text_holo=0x7f070006;
         public static final int abc_search_url_text_normal=0x7f070000;
         public static final int abc_search_url_text_pressed=0x7f070002;
         public static final int abc_search_url_text_selected=0x7f070001;
+        public static final int black=0x7f070003;
+        public static final int blue=0x7f070004;
+        public static final int button_text=0x7f070007;
+        public static final int red=0x7f070005;
     }
     public static final class dimen {
         /**  Default height of an action bar. 
@@ -981,10 +985,11 @@ containing a value of this type.
         public static final int abc_textfield_searchview_holo_light=0x7f020054;
         public static final int abc_textfield_searchview_right_holo_dark=0x7f020055;
         public static final int abc_textfield_searchview_right_holo_light=0x7f020056;
-        public static final int ic_launcher=0x7f020057;
+        public static final int bg=0x7f020057;
+        public static final int ic_launcher=0x7f020058;
     }
     public static final class id {
-        public static final int HSVImage=0x7f050053;
+        public static final int HSVImage=0x7f050054;
         public static final int action_bar=0x7f05001c;
         public static final int action_bar_activity_content=0x7f050015;
         public static final int action_bar_container=0x7f05001b;
@@ -996,22 +1001,22 @@ containing a value of this type.
         public static final int action_menu_divider=0x7f050016;
         public static final int action_menu_presenter=0x7f050017;
         public static final int action_mode_close_button=0x7f050024;
-        public static final int action_settings=0x7f050063;
+        public static final int action_settings=0x7f050064;
         public static final int activity_chooser_view_content=0x7f050025;
-        public static final int add_breakfast=0x7f05005d;
-        public static final int add_dinner=0x7f050060;
+        public static final int add_breakfast=0x7f05005e;
+        public static final int add_dinner=0x7f050061;
         public static final int add_exercise=0x7f050040;
-        public static final int add_lunch=0x7f05005e;
-        public static final int add_other=0x7f050061;
+        public static final int add_lunch=0x7f05005f;
+        public static final int add_other=0x7f050062;
         public static final int always=0x7f05000b;
-        public static final int analyze=0x7f050050;
+        public static final int analyze=0x7f05004f;
         public static final int beginning=0x7f050011;
         public static final int btnChangeDate=0x7f05004b;
-        public static final int calendar=0x7f050051;
+        public static final int calendar=0x7f050050;
         public static final int checkbox=0x7f05002d;
         public static final int collapseActionView=0x7f05000d;
         public static final int container=0x7f05003c;
-        public static final int day=0x7f05005a;
+        public static final int day=0x7f05005b;
         public static final int default_activity_button=0x7f050028;
         public static final int dialog=0x7f05000e;
         public static final int disableHome=0x7f050008;
@@ -1027,25 +1032,26 @@ containing a value of this type.
         public static final int food_input=0x7f050041;
         public static final int food_notes=0x7f050042;
         public static final int food_vew=0x7f050047;
+        public static final int getim=0x7f050052;
         public static final int home=0x7f050014;
         public static final int homeAsUp=0x7f050005;
         public static final int icon=0x7f05002a;
         public static final int ifRoom=0x7f05000a;
         public static final int image=0x7f050027;
-        public static final int linearImage=0x7f050054;
+        public static final int linearImage=0x7f050055;
         public static final int listMode=0x7f050001;
         public static final int list_item=0x7f050029;
         public static final int mImageView=0x7f050044;
-        public static final int mTextView=0x7f050058;
+        public static final int mTextView=0x7f050059;
         public static final int main_menu=0x7f05003f;
         public static final int middle=0x7f050012;
-        public static final int month=0x7f050059;
+        public static final int month=0x7f05005a;
         public static final int never=0x7f050009;
-        public static final int nfc_main=0x7f050056;
-        public static final int nfc_text=0x7f050055;
+        public static final int nfc_main=0x7f050057;
+        public static final int nfc_text=0x7f050056;
         public static final int none=0x7f050010;
         public static final int normal=0x7f050000;
-        public static final int post=0x7f050057;
+        public static final int post=0x7f050058;
         public static final int progress_circular=0x7f050018;
         public static final int progress_horizontal=0x7f050019;
         public static final int radio=0x7f05002f;
@@ -1065,25 +1071,25 @@ containing a value of this type.
         public static final int showCustom=0x7f050007;
         public static final int showHome=0x7f050004;
         public static final int showTitle=0x7f050006;
-        public static final int social_network=0x7f05004f;
-        public static final int spinner1=0x7f050052;
+        public static final int social_network=0x7f05004e;
+        public static final int spinner1=0x7f050053;
         public static final int split_action_bar=0x7f05001e;
         public static final int submit_area=0x7f050039;
         public static final int tabMode=0x7f050002;
         public static final int textView1=0x7f05003d;
         public static final int textView2=0x7f050045;
         public static final int textView3=0x7f05004a;
-        public static final int textView4=0x7f05005c;
-        public static final int textView5=0x7f05005f;
-        public static final int textView6=0x7f050062;
+        public static final int textView4=0x7f05005d;
+        public static final int textView5=0x7f050060;
+        public static final int textView6=0x7f050063;
         public static final int title=0x7f05002b;
         public static final int top_action_bar=0x7f050020;
         public static final int tvDate=0x7f05004c;
         public static final int up=0x7f050021;
         public static final int useLogo=0x7f050003;
-        public static final int viewtoday=0x7f05004e;
+        public static final int viewtoday=0x7f050051;
         public static final int withText=0x7f05000c;
-        public static final int year=0x7f05005b;
+        public static final int year=0x7f05005c;
     }
     public static final class integer {
         /**  The maximum number of action buttons that should be permitted within
@@ -1138,29 +1144,32 @@ containing a value of this type.
         public static final int activity_add_food=0x7f030018;
         public static final int activity_analyze=0x7f030019;
         public static final int activity_calendar=0x7f03001a;
-        public static final int activity_main=0x7f03001b;
-        public static final int activity_nfc=0x7f03001c;
-        public static final int activity_social_network=0x7f03001d;
-        public static final int activity_today=0x7f03001e;
-        public static final int fragment_add_exercise=0x7f03001f;
-        public static final int fragment_add_food=0x7f030020;
-        public static final int fragment_analyze=0x7f030021;
-        public static final int fragment_calendar=0x7f030022;
-        public static final int fragment_main=0x7f030023;
-        public static final int fragment_nfc=0x7f030024;
-        public static final int fragment_social_network=0x7f030025;
-        public static final int fragment_today=0x7f030026;
-        public static final int support_simple_spinner_dropdown_item=0x7f030027;
+        public static final int activity_get_images=0x7f03001b;
+        public static final int activity_main=0x7f03001c;
+        public static final int activity_nfc=0x7f03001d;
+        public static final int activity_social_network=0x7f03001e;
+        public static final int activity_today=0x7f03001f;
+        public static final int fragment_add_exercise=0x7f030020;
+        public static final int fragment_add_food=0x7f030021;
+        public static final int fragment_analyze=0x7f030022;
+        public static final int fragment_calendar=0x7f030023;
+        public static final int fragment_get_images=0x7f030024;
+        public static final int fragment_main=0x7f030025;
+        public static final int fragment_nfc=0x7f030026;
+        public static final int fragment_social_network=0x7f030027;
+        public static final int fragment_today=0x7f030028;
+        public static final int support_simple_spinner_dropdown_item=0x7f030029;
     }
     public static final class menu {
         public static final int add_exercise=0x7f0c0000;
         public static final int add_food=0x7f0c0001;
         public static final int analyze=0x7f0c0002;
         public static final int calendar=0x7f0c0003;
-        public static final int main=0x7f0c0004;
-        public static final int nfc=0x7f0c0005;
-        public static final int social_network=0x7f0c0006;
-        public static final int today=0x7f0c0007;
+        public static final int get_images=0x7f0c0004;
+        public static final int main=0x7f0c0005;
+        public static final int nfc=0x7f0c0006;
+        public static final int social_network=0x7f0c0007;
+        public static final int today=0x7f0c0008;
     }
     public static final class string {
         /**  Content description for the action bar "home" affordance. [CHAR LIMIT=NONE] 
@@ -1203,38 +1212,40 @@ containing a value of this type.
         /**  Description of a share target (both in the list of such or the default share button) in a ShareActionProvider (share UI). [CHAR LIMIT=NONE] 
          */
         public static final int abc_shareactionprovider_share_with_application=0x7f0a000b;
-        public static final int action_settings=0x7f0a000f;
-        public static final int add_exercise=0x7f0a001d;
-        public static final int add_food=0x7f0a001c;
-        public static final int add_notes=0x7f0a001f;
-        public static final int analyze=0x7f0a0013;
+        public static final int action_settings=0x7f0a0010;
+        public static final int add_exercise=0x7f0a001e;
+        public static final int add_food=0x7f0a001d;
+        public static final int add_notes=0x7f0a0020;
+        public static final int analyze=0x7f0a0014;
         public static final int app_name=0x7f0a000d;
-        public static final int breakfast=0x7f0a0018;
-        public static final int calendar=0x7f0a0012;
-        public static final int camera=0x7f0a0020;
-        public static final int carbs=0x7f0a0025;
-        public static final int day=0x7f0a0029;
-        public static final int dinner=0x7f0a001a;
-        public static final int exercise=0x7f0a0017;
-        public static final int hello_world=0x7f0a000e;
-        public static final int lunch=0x7f0a0019;
-        public static final int main_menu=0x7f0a0010;
-        public static final int month=0x7f0a002a;
-        public static final int other=0x7f0a001b;
-        public static final int post=0x7f0a0028;
-        public static final int protein=0x7f0a0026;
-        public static final int social_network=0x7f0a0014;
-        public static final int summary=0x7f0a0023;
-        public static final int title_activity_add_exercise=0x7f0a0021;
-        public static final int title_activity_add_food=0x7f0a001e;
-        public static final int title_activity_analyze=0x7f0a0024;
-        public static final int title_activity_calendar=0x7f0a0022;
-        public static final int title_activity_nfc=0x7f0a002c;
-        public static final int title_activity_social_network=0x7f0a0027;
-        public static final int title_activity_today=0x7f0a0015;
-        public static final int todays_nutrition=0x7f0a0016;
-        public static final int view_today=0x7f0a0011;
-        public static final int year=0x7f0a002b;
+        public static final int breakfast=0x7f0a0019;
+        public static final int calendar=0x7f0a0013;
+        public static final int camera=0x7f0a0021;
+        public static final int carbs=0x7f0a0026;
+        public static final int day=0x7f0a002a;
+        public static final int dinner=0x7f0a001b;
+        public static final int exercise=0x7f0a0018;
+        public static final int get_im=0x7f0a000e;
+        public static final int hello_world=0x7f0a000f;
+        public static final int lunch=0x7f0a001a;
+        public static final int main_menu=0x7f0a0011;
+        public static final int month=0x7f0a002b;
+        public static final int other=0x7f0a001c;
+        public static final int post=0x7f0a0029;
+        public static final int protein=0x7f0a0027;
+        public static final int social_network=0x7f0a0015;
+        public static final int summary=0x7f0a0024;
+        public static final int title_activity_add_exercise=0x7f0a0022;
+        public static final int title_activity_add_food=0x7f0a001f;
+        public static final int title_activity_analyze=0x7f0a0025;
+        public static final int title_activity_calendar=0x7f0a0023;
+        public static final int title_activity_get_images=0x7f0a002e;
+        public static final int title_activity_nfc=0x7f0a002d;
+        public static final int title_activity_social_network=0x7f0a0028;
+        public static final int title_activity_today=0x7f0a0016;
+        public static final int todays_nutrition=0x7f0a0017;
+        public static final int view_today=0x7f0a0012;
+        public static final int year=0x7f0a002c;
     }
     public static final class style {
         /** 

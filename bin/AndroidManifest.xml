@@ -6,6 +6,8 @@
 
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.NFC" />
 
     <uses-feature
@@ -34,23 +36,23 @@
             </intent-filter>
         </activity>
         <activity
-            android:name="com.example.healthnut.Today"
+            android:name="add.Today"
             android:label="@string/title_activity_today" >
         </activity>
         <activity
-            android:name="com.example.healthnut.AddFood"
+            android:name="add.AddFood"
             android:label="@string/title_activity_add_food" >
         </activity>
         <activity
-            android:name="com.example.healthnut.AddExercise"
+            android:name="add.AddExercise"
             android:label="@string/title_activity_add_exercise" >
         </activity>
         <activity
-            android:name="com.example.healthnut.appCalendar"
+            android:name="analyze.appCalendar"
             android:label="@string/title_activity_calendar" >
         </activity>
         <activity
-            android:name="com.example.healthnut.Analyze"
+            android:name="analyze.Analyze"
             android:label="@string/title_activity_analyze" >
         </activity>
         <activity
@@ -60,16 +62,22 @@
         <activity
             android:name="com.example.healthnut.NFC"
             android:label="@string/title_activity_nfc" >
-            
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
             <intent-filter>
                 <action android:name="android.nfc.action.NDEF_DISCOVERED" />
+
                 <category android:name="android.intent.category.DEFAULT" />
+
                 <data android:mimeType="application/com.example.healthnut" />
             </intent-filter>
+        </activity>
+        <activity
+            android:name="analyze.GetImages"
+            android:label="@string/title_activity_get_images" >
         </activity>
     </application>
 

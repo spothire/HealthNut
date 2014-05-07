@@ -3,7 +3,7 @@
     android:id="@+id/container"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.example.healthnut.Today"
+    tools:context="add.Today"
     tools:ignore="MergeRootFrame" >
 
     <TextView

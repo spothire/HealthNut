@@ -2,7 +2,7 @@
     android:id="@+id/container"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.example.healthnut.Analyze"
+    tools:context="analyze.Analyze"
     tools:ignore="MergeRootFrame" xmlns:android="http://schemas.android.com/apk/res/android">
 
     <Button
@@ -12,6 +12,8 @@
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
         android:layout_marginBottom="28dp"
+        android:background="@color/button_text"
+        android:textColor="@android:color/white"
         android:text="@string/main_menu" />
 
     <TextView
@@ -22,6 +24,8 @@
         android:layout_below="@+id/textView1"
         android:layout_marginTop="17dp"
         android:text="@string/carbs"
+        android:background="@color/button_text"
+        android:textColor="@android:color/white"
         android:textAppearance="?android:attr/textAppearanceSmall" />
 
     <TextView
@@ -32,6 +36,8 @@
         android:layout_centerHorizontal="true"
         android:layout_marginTop="26dp"
         android:text="@string/analyze"
+        android:background="@color/button_text"
+        android:textColor="@android:color/white"
         android:textAppearance="?android:attr/textAppearanceLarge" />
 
    <ScrollView
@@ -42,12 +48,15 @@
         android:layout_alignRight="@+id/textView1"
         android:layout_below="@+id/textView2"
         android:layout_marginLeft="28dp"
+        
         android:layout_marginTop="20dp" >
 
        <TextView
            android:id="@+id/food_vew"
            android:layout_width="match_parent"
            android:layout_height="wrap_content"
+           android:background="@color/button_text"
+        android:textColor="@android:color/white"
            android:text="" />
 
     </ScrollView>
@@ -67,6 +76,8 @@
                 android:id="@+id/exercise_view"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:background="@color/button_text"
+        		android:textColor="@android:color/white"
                 android:text="" />
 
     </ScrollView>
@@ -77,6 +88,8 @@
         android:layout_height="wrap_content"
         android:layout_alignParentLeft="true"
         android:layout_below="@+id/scrollView1"
+        android:background="@color/button_text"
+        android:textColor="@android:color/white"
         android:text="@string/protein" />
 
 </RelativeLayout>

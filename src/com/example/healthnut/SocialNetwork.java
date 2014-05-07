@@ -66,9 +66,9 @@ public class SocialNetwork extends ActionBarActivity{
 		
 		final Button main_menu = (Button) findViewById(R.id.main_menu);
 		final Button post = (Button) findViewById(R.id.post);
-		//final EditText day = (EditText) findViewById(R.id.day);
-		//final EditText month = (EditText) findViewById(R.id.month);
-		//final EditText year = (EditText) findViewById(R.id.year);
+		final EditText day = (EditText) findViewById(R.id.day);
+		final EditText month = (EditText) findViewById(R.id.month);
+		final EditText year = (EditText) findViewById(R.id.year);
 		
 		
 		/*imageGallery=(LinearLayout)findViewById(R.id.linearImage);
@@ -117,14 +117,14 @@ public class SocialNetwork extends ActionBarActivity{
     	post.setOnClickListener(new View.OnClickListener() {
     	
     		public void onClick(View arg0) {
-    			int iday = 2;
+    			int iday = 6;
     			int imonth = 4;
     			int iyear = 2014;
-    			
-    			/*if(day.getText()!=null)
+    			/*
+    			if(day.getText()!=null)
     				iday = Integer.parseInt(day.getText().toString());
     			if(month.getText()!=null)
-    				imonth = Integer.parseInt(month.getText().toString());
+    				imonth = Integer.parseInt(month.getText().toString())-1;
     			if(year.getText()!=null)
     				iyear = Integer.parseInt(year.getText().toString());*/
     			
@@ -132,7 +132,7 @@ public class SocialNetwork extends ActionBarActivity{
     			//Starting a new Intent
     			Intent nextScreen = new Intent(getApplicationContext(),  NFC.class);
     			nextScreen.putExtra("date", dateID);
-                Toast.makeText(getApplicationContext(), dateID, Toast.LENGTH_SHORT).show();
+                //Toast.makeText(getApplicationContext(), dateID, Toast.LENGTH_SHORT).show();
     			startActivity(nextScreen);
 
     		}
