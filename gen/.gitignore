@@ -1,6 +1,7 @@
 /android
 /com
 /.gitignore
+<<<<<<< HEAD
 /android
 /com
 /android
@@ -77,3 +78,5 @@
 /com
 /android
 /com
+=======
+>>>>>>> FETCH_HEAD
