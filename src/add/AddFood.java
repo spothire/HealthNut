@@ -15,9 +15,6 @@ import com.example.healthnut.R.id;
 import com.example.healthnut.R.layout;
 import com.example.healthnut.R.menu;
 import com.example.support.Food;
-import com.parse.ParseException;
-import com.parse.ParseFile;
-import com.parse.SaveCallback;
 
 import DBLayout.SqlLiteController;
 import android.support.v7.app.ActionBarActivity;
@@ -57,7 +54,7 @@ public class AddFood extends ActionBarActivity {
 	ImageView mImage;
 	Food f;
 	Uri fileUri;
-	private ParseFile photoFile;
+
 	int id;
 	File image;
 
@@ -67,16 +64,6 @@ public class AddFood extends ActionBarActivity {
 	        if (resultCode == RESULT_OK) {
 	        	mImage = (ImageView) findViewById(R.id.mImageView);
                 mImage.setImageURI(fileUri);
-                image = new File(fileUri.getPath());
-                f.setImage(image);
-                byte[] imdata = null;
-
-				imdata = toByte(image);
-
-				
-				Log.d("test", imdata.toString());
-                
-				saveScaledPhoto(imdata);
                 
 	            // Image captured and saved to fileUri specified in the Intent
 	            //Toast.makeText(this, "Image saved to:\n" +
@@ -90,62 +77,8 @@ public class AddFood extends ActionBarActivity {
 	        }
 	    }
 	}
-	private void saveScaledPhoto(byte[] data) {
-
-		// Resize photo from camera byte array
-		Bitmap mealImage = BitmapFactory.decodeByteArray(data, 0, data.length);
-		Bitmap mealImageScaled = Bitmap.createScaledBitmap(mealImage, 200, 200
-				* mealImage.getHeight() / mealImage.getWidth(), false);
-
-		// Override Android default landscape orientation and save portrait
-		Matrix matrix = new Matrix();
-		matrix.postRotate(90);
-		Bitmap rotatedScaledMealImage = Bitmap.createBitmap(mealImageScaled, 0,
-				0, mealImageScaled.getWidth(), mealImageScaled.getHeight(),
-				matrix, true);
-
-		ByteArrayOutputStream bos = new ByteArrayOutputStream();
-		rotatedScaledMealImage.compress(Bitmap.CompressFormat.JPEG, 100, bos);
-
-		byte[] scaledData = bos.toByteArray();
-
-		// Save the scaled image to Parse
-		photoFile = new ParseFile("meal_photo.jpg", scaledData);
-		photoFile.saveInBackground(new SaveCallback() {
-
-			public void done(ParseException e) {
-				if (e != null) {
-					Toast.makeText(getApplicationContext(), "Problem", Toast.LENGTH_LONG).show();
-				} else {
-					Toast.makeText(getApplicationContext(), "Posted to Cloud", Toast.LENGTH_LONG).show();
-				}
-			}
-		});
-	}
 	
-	
-	
-	private byte[] toByte(File file){
-		
 
-		byte[] b = new byte[(int) file.length()];
-        try {
-              FileInputStream fileInputStream = new FileInputStream(file);
-              fileInputStream.read(b);
-              for (int i = 0; i < b.length; i++) {
-                          System.out.print((char)b[i]);
-               }
-         } catch (FileNotFoundException e) {
-                     System.out.println("File Not Found.");
-                     e.printStackTrace();
-         }
-         catch (IOException e1) {
-                  System.out.println("Error Reading The File.");
-                   e1.printStackTrace();
-         }
-		return b;
-	}
-	
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_add_food);

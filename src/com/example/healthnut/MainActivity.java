@@ -2,7 +2,7 @@ package com.example.healthnut;
 
 import add.Today;
 import analyze.Analyze;
-import analyze.GetImages;
+
 import analyze.appCalendar;
 import android.support.v7.app.ActionBarActivity;
 import android.support.v7.app.ActionBar;
@@ -18,13 +18,7 @@ import android.widget.Button;
 import android.os.Build;
 
 import com.example.support.Food;
-import com.parse.Parse;
-import com.parse.ParseAnalytics;
-import com.parse.ParseObject;
-import com.parse.Parse;
-import com.parse.ParseAnalytics;
-import com.parse.ParseInstallation;
-import com.parse.PushService;
+
 
 public class MainActivity extends ActionBarActivity {
 
@@ -38,19 +32,12 @@ public class MainActivity extends ActionBarActivity {
 					.add(R.id.container, new PlaceholderFragment()).commit();
 		}
 		//Parse Initialization 
-		ParseObject.registerSubclass(Food.class);
-	    Parse.initialize(this, "ZjPLQ50sLlDHGD9kUjJL7P4JZCUg9eqscn9mOfHE", "0cnafgatYKa60NvXSIT4RhUSzqq47piPlOAaawkz");
-		
-		
+	
 		final Button view_today = (Button) findViewById(R.id.viewtoday);
 		final Button calendar = (Button) findViewById(R.id.calendar);
 		final Button analyze = (Button) findViewById(R.id.analyze);
 		final Button social = (Button) findViewById(R.id.social_network);
-		final Button getim = (Button) findViewById(R.id.getim);
-		
-		ParseObject testObject = new ParseObject("TestObject");
-		testObject.put("foo", "bar");
-		testObject.saveInBackground();
+
         //Listening to button event
          view_today.setOnClickListener(new View.OnClickListener() {
 
@@ -62,15 +49,7 @@ public class MainActivity extends ActionBarActivity {
               }
           }); 
          
-         getim.setOnClickListener(new View.OnClickListener() {
 
-             public void onClick(View arg0) {
-                 //Starting a new Intent
-                 Intent nextScreen = new Intent(getApplicationContext(),  GetImages.class);
-                 startActivity(nextScreen);
-
-             }
-         }); 
          
          calendar.setOnClickListener(new View.OnClickListener() {
 
